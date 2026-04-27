@@ -1,0 +1,179 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import SectionTitle from "../../../components/SectionTitle.astro";
+import {
+  travelPhotoCases,
+  travelPhotoExperience,
+  travelPhotoFeatures,
+  travelPhotoGallery,
+  travelPhotoStats,
+  travelPhotoValues
+} from "../../../data/travelPhoto";
+---
+
+<BaseLayout
+  title="AI旅拍机"
+  description="云裳一刻 AI旅拍机，以 AIGC 影像与在地文化叙事重构景区互动体验，适用于景区、文博、历史街区与城市地标场景。"
+>
+  <section class="travel-hero">
+    <div class="shell travel-hero-grid">
+      <div class="travel-hero-copy">
+        <p class="eyebrow">YUNSHANGYIKE AI TRAVEL PHOTO</p>
+        <h1>AI旅拍机</h1>
+        <p class="travel-lead">
+          通过AI拍照设备与内容生成能力，提升游客参与度与停留时间，带动现场消费与二次传播.
+        </p>
+        <div class="tag-list card-hero-tags">
+          <span class="tag">中国风景名胜区协会推荐项目</span>
+          <span class="tag">内容生成与传播能力</span>
+          <span class="tag">现场消费转化能力</span>
+          <span class="tag">文旅消费场景</span>
+        </div>
+        <div class="hero-actions">
+          <a class="button button-primary" href="/about/#contact">咨询项目合作</a>
+        </div>
+      </div>
+      <div class="travel-hero-visual">
+        <img
+          class="travel-hero-main"
+          src="/assets/travel-photo/top1.png"
+          alt="云裳一刻旅拍机景区落地案例"
+        />
+        
+      </div>
+    </div>
+  </section>
+
+  <section class="page-section">
+    <div class="shell">
+      <div class="travel-stat-grid">
+        {travelPhotoStats.map((item) => (
+          <article class="travel-stat-card">
+            <strong>{item.value}</strong>
+            <p>{item.label}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="page-section">
+    <div class="shell">
+      <SectionTitle
+        eyebrow="BRAND VALUE"
+        title="让景区更容易赚钱的内容与互动方案"
+        description="从游客体验到内容传播，再到消费转化，形成完整的文旅运营闭环"
+      />
+      <div class="card-grid">
+        {travelPhotoValues.map((item) => (
+          <article class="info-card travel-value-card">
+            <h3>{item.title}</h3>
+            <p>{item.description}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="page-section">
+    <div class="shell travel-showcase-grid">
+      <div>
+        <SectionTitle
+          eyebrow="CAPABILITY"
+          title="核心能力不是拍照，而是内容与传播"
+          description="围绕“好看、好发、能传播”，让每一次拍照都具备分享与消费价值"
+        />
+        <div class="travel-feature-list">
+          {travelPhotoFeatures.map((item) => (
+            <div class="travel-feature-item">
+              <span></span>
+              <p>{item}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div class="travel-poster-stack">
+        <img src="/assets/travel-photo/standard-024.png" alt="大明湖旅拍样张" />
+        <img src="/assets/travel-photo/standard-012.png" alt="数字文旅氛围视觉" />
+      </div>
+    </div>
+  </section>
+
+  <section class="page-section">
+    <div class="shell">
+      <SectionTitle
+        eyebrow="EXPERIENCE FLOW"
+        title="三步完成一次高质量打卡体验"
+        description="流程简单、出片快速"
+      />
+      <div class="travel-flow-grid">
+        {travelPhotoExperience.map((item) => (
+          <article class="info-card travel-flow-card">
+            {item.imageSrc && (
+              <div class="travel-flow-visual">
+                <img src={item.imageSrc} alt={item.imageAlt ?? item.title} loading="lazy" />
+              </div>
+            )}
+            <div class="travel-flow-copy">
+              <p class="travel-step">{item.step}</p>
+              <h3>{item.title}</h3>
+              <p>{item.description}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="page-section">
+    <div class="shell">
+      <SectionTitle
+        eyebrow="CASE WALL"
+        title="案例墙"
+        description="真实游客参与与持续运营效果，展示AI拍照设备在景区与商业场景中的落地转化能力"
+      />
+      <div class="travel-gallery">
+        {travelPhotoGallery.map((item, index) => (
+          <figure class:list={["travel-gallery-item", index % 3 === 0 && "wide", index === 6 && "tall"]}>
+            <img src={item.src} alt={item.alt} loading="lazy" />
+            <figcaption>{item.caption}</figcaption>
+          </figure>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="page-section">
+    <div class="shell">
+      <SectionTitle
+        eyebrow="BENCHMARK CASES"
+        title="标杆案例，验证不同文旅场景的落地能力"
+        description="覆盖景区、文博与历史街区等多类型场景，通过真实项目验证“内容 + 互动 + 转化”的一体化能力。"
+      />
+      <div class="card-grid">
+        {travelPhotoCases.map((item) => (
+          <article class="info-card">
+            <p class="card-meta">标杆案例</p>
+            <h3>{item.title}</h3>
+            <p>{item.summary}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="page-section">
+    <div class="shell">
+      <div class="travel-cta">
+        <div>
+          <p class="eyebrow">COOPERATION</p>
+          <h2>适合希望做出新体验、新传播和新增量的景区与文化地标</h2>
+          <p>
+            支持联合落地、内容定制、运营协同与长期服务。具体商务细节可沟通，但页面不公开敏感价格与过细设备参数。
+          </p>
+        </div>
+        <a class="button button-primary" href="/about/#contact">预约沟通方案</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

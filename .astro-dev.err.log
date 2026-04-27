@@ -1,0 +1,106 @@
+14:35:39 [ERROR] Could not import `/src/data/cardMachine.ts`.
+  Hint:
+    This is often caused by a typo in the import path. Please make sure the file exists.
+  Error reference:
+    https://docs.astro.build/en/reference/errors/failed-to-load-module-ssr/
+  Stack trace:
+    at loadAndTransform (file:///C:/Users/%E6%B5%B7%E5%B2%A9/Desktop/tianxiang-website/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:51969:17)
+15:46:59 [ERROR] Could not import `/src/data/cardMachine.ts`.
+  Hint:
+    This is often caused by a typo in the import path. Please make sure the file exists.
+  Error reference:
+    https://docs.astro.build/en/reference/errors/failed-to-load-module-ssr/
+  Stack trace:
+    at loadAndTransform (file:///C:/Users/%E6%B5%B7%E5%B2%A9/Desktop/tianxiang-website/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:51969:17)
+16:58:22 [ERROR] Could not import `/src/data/compute.ts`.
+  Hint:
+    This is often caused by a typo in the import path. Please make sure the file exists.
+  Error reference:
+    https://docs.astro.build/en/reference/errors/failed-to-load-module-ssr/
+  Stack trace:
+    at loadAndTransform (file:///C:/Users/%E6%B5%B7%E5%B2%A9/Desktop/tianxiang-website/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:51969:17)
+16:59:40 [ERROR] Could not import `/src/data/compute.ts`.
+  Hint:
+    This is often caused by a typo in the import path. Please make sure the file exists.
+  Error reference:
+    https://docs.astro.build/en/reference/errors/failed-to-load-module-ssr/
+  Stack trace:
+    at loadAndTransform (file:///C:/Users/%E6%B5%B7%E5%B2%A9/Desktop/tianxiang-website/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:51969:17)
+16:59:45 [ERROR] Could not import `/src/data/compute.ts`.
+  Hint:
+    This is often caused by a typo in the import path. Please make sure the file exists.
+  Error reference:
+    https://docs.astro.build/en/reference/errors/failed-to-load-module-ssr/
+  Stack trace:
+    at loadAndTransform (file:///C:/Users/%E6%B5%B7%E5%B2%A9/Desktop/tianxiang-website/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:51969:17)
+16:59:50 [ERROR] Could not import `/src/data/compute.ts`.
+  Hint:
+    This is often caused by a typo in the import path. Please make sure the file exists.
+  Error reference:
+    https://docs.astro.build/en/reference/errors/failed-to-load-module-ssr/
+  Stack trace:
+    at loadAndTransform (file:///C:/Users/%E6%B5%B7%E5%B2%A9/Desktop/tianxiang-website/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:51969:17)
+16:59:52 [ERROR] Could not import `/src/data/compute.ts`.
+  Hint:
+    This is often caused by a typo in the import path. Please make sure the file exists.
+  Error reference:
+    https://docs.astro.build/en/reference/errors/failed-to-load-module-ssr/
+  Stack trace:
+    at loadAndTransform (file:///C:/Users/%E6%B5%B7%E5%B2%A9/Desktop/tianxiang-website/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:51969:17)
+16:59:53 [ERROR] Could not import `/src/data/compute.ts`.
+  Hint:
+    This is often caused by a typo in the import path. Please make sure the file exists.
+  Error reference:
+    https://docs.astro.build/en/reference/errors/failed-to-load-module-ssr/
+  Stack trace:
+    at loadAndTransform (file:///C:/Users/%E6%B5%B7%E5%B2%A9/Desktop/tianxiang-website/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:51969:17)
+17:04:22 [ERROR] Could not import `/src/data/compute.ts`.
+  Hint:
+    This is often caused by a typo in the import path. Please make sure the file exists.
+  Error reference:
+    https://docs.astro.build/en/reference/errors/failed-to-load-module-ssr/
+  Stack trace:
+    at loadAndTransform (file:///C:/Users/%E6%B5%B7%E5%B2%A9/Desktop/tianxiang-website/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:51969:17)
+17:04:25 [ERROR] Could not import `/src/data/compute.ts`.
+  Hint:
+    This is often caused by a typo in the import path. Please make sure the file exists.
+  Error reference:
+    https://docs.astro.build/en/reference/errors/failed-to-load-module-ssr/
+  Stack trace:
+    at loadAndTransform (file:///C:/Users/%E6%B5%B7%E5%B2%A9/Desktop/tianxiang-website/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:51969:17)
+17:04:26 [ERROR] Could not import `/src/data/compute.ts`.
+  Hint:
+    This is often caused by a typo in the import path. Please make sure the file exists.
+  Error reference:
+    https://docs.astro.build/en/reference/errors/failed-to-load-module-ssr/
+  Stack trace:
+    at loadAndTransform (file:///C:/Users/%E6%B5%B7%E5%B2%A9/Desktop/tianxiang-website/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:51969:17)
+17:04:28 [ERROR] Could not import `/src/data/compute.ts`.
+  Hint:
+    This is often caused by a typo in the import path. Please make sure the file exists.
+  Error reference:
+    https://docs.astro.build/en/reference/errors/failed-to-load-module-ssr/
+  Stack trace:
+    at loadAndTransform (file:///C:/Users/%E6%B5%B7%E5%B2%A9/Desktop/tianxiang-website/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:51969:17)
+17:06:57 [ERROR] Could not import `/src/data/compute.ts`.
+  Hint:
+    This is often caused by a typo in the import path. Please make sure the file exists.
+  Error reference:
+    https://docs.astro.build/en/reference/errors/failed-to-load-module-ssr/
+  Stack trace:
+    at loadAndTransform (file:///C:/Users/%E6%B5%B7%E5%B2%A9/Desktop/tianxiang-website/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:51969:17)
+17:06:58 [ERROR] Could not import `/src/data/compute.ts`.
+  Hint:
+    This is often caused by a typo in the import path. Please make sure the file exists.
+  Error reference:
+    https://docs.astro.build/en/reference/errors/failed-to-load-module-ssr/
+  Stack trace:
+    at loadAndTransform (file:///C:/Users/%E6%B5%B7%E5%B2%A9/Desktop/tianxiang-website/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:51969:17)
+19:58:43 [ERROR] Could not import `/src/data/site.ts`.
+  Hint:
+    This is often caused by a typo in the import path. Please make sure the file exists.
+  Error reference:
+    https://docs.astro.build/en/reference/errors/failed-to-load-module-ssr/
+  Stack trace:
+    at loadAndTransform (file:///C:/Users/%E6%B5%B7%E5%B2%A9/Desktop/tianxiang-website/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:51969:17)
+^C^C

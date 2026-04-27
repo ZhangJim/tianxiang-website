@@ -1,0 +1,26 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Hero from "../../components/Hero.astro";
+import CardGrid from "../../components/CardGrid.astro";
+import { terminalProducts } from "../../data/terminals";
+---
+
+<BaseLayout title="智能终端">
+  <Hero
+    eyebrow="AI TERMINALS"
+    title="智能终端覆盖文旅、商业与门店互动场景"
+    description="终端业务不只是设备展示，更强调内容生成、互动体验与现场转化。面向景区、商场、门店与品牌活动，提供可落地的终端解决方案。"
+    primaryHref="/terminals/travel-photo/"
+    primaryLabel="查看 AI旅拍机"
+    secondaryHref="/terminals/ai-cat/"
+    secondaryLabel="查看 AI机器猫"
+  >
+    <p>每个终端产品单独成页，聚焦业务价值、场景适配和项目落地方式。</p>
+  </Hero>
+
+  <section class="page-section">
+    <div class="shell">
+      <CardGrid items={terminalProducts.map((item) => ({ title: item.title, description: item.description, href: item.href }))} />
+    </div>
+  </section>
+</BaseLayout>

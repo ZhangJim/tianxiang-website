@@ -1,0 +1,26 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import SectionTitle from "../../components/SectionTitle.astro";
+import { caseStudies } from "../../data/cases";
+---
+
+<BaseLayout title="案例中心">
+  <section class="page-section">
+    <div class="shell">
+      <SectionTitle
+        eyebrow="CASE STUDIES"
+        title="案例中心单独成页，集中建立信任"
+        description="首页展示摘要，这里展示分类和场景，后续可以继续扩展成更多独立案例页。"
+      />
+      <div class="card-grid">
+        {caseStudies.map((item) => (
+          <article class="info-card">
+            <p class="card-meta">{item.category}</p>
+            <h3>{item.title}</h3>
+            <p>{item.summary}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

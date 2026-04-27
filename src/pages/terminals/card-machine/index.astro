@@ -1,0 +1,224 @@
+---
+import { existsSync } from "node:fs";
+import { join } from "node:path";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import SectionTitle from "../../../components/SectionTitle.astro";
+import {
+  cardMachineCases,
+  cardMachineCardStyles,
+  cardMachineExperience,
+  cardMachineFeatures,
+  cardMachinePhotoWall,
+  cardMachineStats,
+  cardMachineValues
+} from "../../../data/cardMachine";
+
+const flowItems = cardMachineExperience.map((item) => {
+  const relativePath = item.imageSrc?.replace(/^\//, "");
+  const hasImage = relativePath ? existsSync(join(process.cwd(), "public", relativePath)) : false;
+
+  return {
+    ...item,
+    hasImage
+  };
+});
+---
+
+<BaseLayout
+  title="AI 潮玩卡牌机"
+  description="POPOFIFI AI 潮玩卡牌机，以个人形象 AI 智能体、实体收藏卡牌和轻社交入口重构商场与 IP 场景下的新型体验消费。"
+>
+  <section class="card-hero">
+    <div class="shell card-hero-grid">
+      <div class="card-hero-copy">
+        <p class="eyebrow">POPOFIFI AI CARD MACHINE</p>
+        <h1>AI潮玩卡牌机</h1>
+        <p class="card-lead">
+          让用户在一分钟内完成拍摄、生成、出卡与数字分身解锁，
+          把一张实体收藏卡牌扩展成可分享、可互动、可持续运营的个人形象 AI 智能体入口。
+        </p>
+        <div class="tag-list card-hero-tags">
+          <span class="tag">个人形象 AI 智能体</span>
+          <span class="tag">实体卡牌 + 数字分身</span>
+          <span class="tag">NFC 轻触互动</span>
+          <span class="tag">商场与 IP 场景</span>
+        </div>
+        <div class="hero-actions">
+          <a class="button button-primary" href="/about/#contact">咨询合作方案</a>
+        </div>
+      </div>
+      <div class="card-hero-visual">
+        <img
+          class="card-hero-main"
+          src="/assets/card-machine/mall-013.png"
+          alt="POPOFIFI 商场落地现场"
+        />
+      </div>
+    </div>
+  </section>
+
+  <section class="page-section">
+    <div class="shell">
+      <div class="card-stat-grid">
+        {cardMachineStats.map((item) => (
+          <article class="card-stat-card">
+            <strong>{item.value}</strong>
+            <p>{item.label}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="page-section">
+    <div class="shell">
+      <SectionTitle
+        eyebrow="POSITIONING"
+        title="一套面向新消费场景的互动零售与数字身份入口。"
+        description="围绕商场中的沉浸体验，通过角色生成、实体收藏与社交传播的结合，构建用户从体验、分享到持续互动的完整链路，打造可被反复激活的线下流量入口。"
+      />
+      <div class="card-grid">
+        {cardMachineValues.map((item) => (
+          <article class="info-card card-value-card">
+            <h3>{item.title}</h3>
+            <p>{item.description}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="page-section">
+    <div class="shell card-showcase-grid">
+      <div>
+        <SectionTitle
+          eyebrow="FEATURES"
+          title="围绕体验与传播的核心能力"
+          description="覆盖用户生成、内容传播与持续互动，让线下体验具备长期运营价值。"
+        />
+        <div class="card-feature-list">
+          {cardMachineFeatures.map((item) => (
+            <div class="card-feature-item">
+              <span></span>
+              <p>{item}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div class="card-capability-panel">
+        <p class="eyebrow">CAPABILITY BOARD</p>
+        <h3>让一次体验，持续产生连接与价值</h3>
+        <div class="card-capability-grid">
+          <article>
+            <strong>身份生成</strong>
+            <p>现场生成的不是普通纪念品，而是具备唯一感、收藏感和分享属性的个人角色入口。</p>
+          </article>
+          <article>
+            <strong>社交传播</strong>
+            <p>通过 NFC、扫码和小程序承接传播链路，让卡牌从现场消费延伸到线上互动。</p>
+          </article>
+          <article>
+            <strong>持续更新</strong>
+            <p>后续可接入装扮、限定卡面、IP 联动与数字衍生玩法，形成更长的用户生命周期。</p>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="page-section">
+    <div class="shell">
+      <SectionTitle
+        eyebrow="ONE MINUTE FLOW"
+        title="一分钟体验，双重结果"
+        description="现场用户得到的是实体卡牌，后续可持续运营的是数字身份与 Agent 互动。"
+      />
+      <div class="card-flow-grid">
+        {flowItems.map((item) => (
+          <article class="info-card card-flow-card">
+            {item.hasImage && (
+              <div class="card-flow-visual">
+                <img src={item.imageSrc} alt={item.imageAlt ?? item.title} loading="lazy" />
+              </div>
+            )}
+            <div class="card-flow-copy">
+              <p class="card-step">{item.step}</p>
+              <h3>{item.title}</h3>
+              <p>{item.description}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="page-section">
+    <div class="shell">
+      <SectionTitle
+        eyebrow="CASE WALL"
+        title="案例墙"
+        description="部分落地场景展示"
+      />
+      <div class="card-gallery">
+        {cardMachinePhotoWall.map((item, index) => (
+          <figure class:list={["card-gallery-item", index === 0 && "wide", !item.caption && "no-caption"]}>
+            <img src={item.src} alt={item.alt} loading="lazy" />
+            {item.caption && <figcaption>{item.caption}</figcaption>}
+          </figure>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="page-section">
+    <div class="shell">
+      <SectionTitle
+        eyebrow="CARD STYLES"
+        title="卡牌样式"
+        description="部分风格示意"
+      />
+      <div class="card-style-grid">
+        {cardMachineCardStyles.map((item) => (
+          <figure class="card-style-item">
+            <img src={item.src} alt={item.alt} loading="lazy" />
+          </figure>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="page-section">
+    <div class="shell">
+      <SectionTitle
+        eyebrow="SCENARIOS"
+        title="适配多种商业场景"
+        description="从商场引流到活动传播，再到IP联动与社交连接，及景区文化传播，让每一次体验都具备传播与持续运营价值。"
+      />
+      <div class="card-grid">
+        {cardMachineCases.map((item) => (
+          <article class="info-card">
+            <p class="card-meta">应用场景</p>
+            <h3>{item.title}</h3>
+            <p>{item.summary}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="page-section">
+    <div class="shell">
+      <div class="card-cta">
+        <div>
+          <p class="eyebrow">COOPERATION</p>
+          <h2>适合希望做年轻化升级、内容化运营和持续客流转化的商业空间</h2>
+          <p>
+            支持商场点位、快闪活动、影视 IP 联动和品牌限定合作。
+            价格与分成不在页面公开，重点先沟通场景与目标人群。
+          </p>
+        </div>
+        <a class="button button-primary" href="/about/#contact">预约沟通</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

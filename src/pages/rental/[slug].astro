@@ -1,0 +1,47 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import SectionTitle from "../../components/SectionTitle.astro";
+import ComputeTabs from "../../components/ComputeTabs.astro";
+import { rentalMachines } from "../../data/rental";
+
+export function getStaticPaths() {
+  return rentalMachines.map((machine) => ({
+    params: { slug: machine.slug },
+    props: { machine }
+  }));
+}
+
+const { machine } = Astro.props;
+---
+
+<BaseLayout title={machine.name}>
+  <section class="page-section">
+    <div class="shell">
+      <ComputeTabs />
+      <SectionTitle
+        eyebrow="RENTAL DETAIL"
+        title={machine.name}
+        description="这一页用统一模板承接不同机型，后续新增型号只改数据文件，不改布局。"
+      />
+      <div class="two-column">
+        <article class="info-card">
+          <h3>核心配置</h3>
+          <p>GPU：{machine.gpu}</p>
+          <p>数量：{machine.count}</p>
+          <p>CPU：{machine.cpu}</p>
+          <p>内存：{machine.memory}</p>
+          <p>存储：{machine.storage}</p>
+          <p>网络：{machine.network}</p>
+        </article>
+        <article class="info-card">
+          <h3>交付与服务</h3>
+          <p>交付周期：{machine.delivery}</p>
+          <p>适用场景：{machine.usage}</p>
+          <p>租赁价格：{machine.price}</p>
+          <p>支持企业合作、部署建议与远程运维。</p>
+          <a href="/about/#contact">联系销售</a>
+        </article>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

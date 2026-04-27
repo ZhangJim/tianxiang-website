@@ -1,0 +1,30 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import SectionTitle from "../../components/SectionTitle.astro";
+---
+
+<BaseLayout title="行业方案">
+  <section class="page-section">
+    <div class="shell">
+      <SectionTitle
+        eyebrow="SOLUTIONS"
+        title="方案页负责把产品翻译成客户价值"
+        description="如果只写产品介绍，客户容易停留在功能层面。方案页用来解释适合谁、怎么落地、结果是什么。"
+      />
+      <div class="card-grid">
+        <article class="info-card">
+          <h3>企业 AI 应用方案</h3>
+          <p>结合算力市场、模型市场和整机租赁，服务企业训练、推理和私有部署。</p>
+        </article>
+        <article class="info-card">
+          <h3>文旅数字化方案</h3>
+          <p>以旅拍机为核心，结合内容模板、运营支持和文创转化提升景区体验。</p>
+        </article>
+        <article class="info-card">
+          <h3>商业互动零售方案</h3>
+          <p>以潮玩卡牌机承接年轻消费、商场活动和数字身份互动体验。</p>
+        </article>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

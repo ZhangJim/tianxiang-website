@@ -1,0 +1,37 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import SectionTitle from "../../components/SectionTitle.astro";
+import { company } from "../../data/site";
+---
+
+<BaseLayout title="关于我们">
+  <section class="page-section">
+    <div class="shell">
+      <SectionTitle
+        eyebrow="ABOUT"
+        title="让AI内容与设备，在真实场景中持续产生价值"
+        description="我们专注于文旅与商业场景的 AI 内容与终端落地，
+从内容生成、设备部署到长期运营，帮助客户实现“体验 + 转化 + 传播”的一体化闭环。"
+      />
+      <div class="two-column">
+        <article class="info-card">
+          <h3>{company.name}</h3>
+          <p>{company.description}</p>
+          <div class="tag-list">
+            <span class="tag">算法</span>
+            <span class="tag">应用</span>
+            <span class="tag">终端</span>
+            <span class="tag">算力</span>
+          </div>
+        </article>
+        <article class="info-card" id="contact">
+          <h3>商务联系</h3>
+          <p>电话：{company.phone}</p>
+          <p>邮箱：{company.email}</p>
+          <p>地址：{company.address}</p>
+          <p>可用于项目咨询、方案合作、资源租赁与设备投放。</p>
+        </article>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,20 @@
+---
+const currentPath = Astro.url.pathname;
+
+const tabs = [
+  { href: "/compute/market/", label: "算力市场" },
+  { href: "/models/", label: "模型市场" },
+  { href: "/rental/", label: "整机租赁" }
+];
+---
+
+<div class="compute-tabs">
+  {tabs.map((tab) => {
+    const active = currentPath === tab.href || currentPath.startsWith(tab.href);
+    return (
+      <a href={tab.href} class:list={["compute-tab", active && "active"]}>
+        {tab.label}
+      </a>
+    );
+  })}
+</div>

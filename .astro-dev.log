@@ -1,0 +1,401 @@
+
+> tianxiang-website@0.0.1 dev
+> astro dev --host 0.0.0.0
+
+14:11:33 [types] Generated 1ms
+
+ astro  v4.16.19 ready in 115 ms
+
+┃ Local    http://localhost:4321/
+┃ Network  http://192.168.123.63:4321/
+
+14:11:33 watching for file changes...
+14:13:37 [200] / 10ms
+14:13:42 [200] /terminals/card-machine/ 5ms
+14:16:16 [200] /terminals/card-machine/ 4ms
+14:16:16 [200] /terminals/card-machine/ 3ms
+14:35:39 [watch] src/data/cardMachine.ts
+14:36:05 [watch] src/data/cardMachine.ts
+14:36:06 [200] /terminals/card-machine/ 3ms
+14:43:21 [200] /terminals/card-machine/ 3ms
+14:43:23 [200] /terminals/card-machine/ 2ms
+14:48:40 [watch] src/data/cardMachine.ts
+14:48:40 [200] /terminals/card-machine/ 4ms
+14:48:45 [watch] src/pages/terminals/card-machine/index.astro
+14:48:46 [404] /terminals/card-machine/ 1ms
+14:49:19 [watch] src/pages/terminals/card-machine/index.astro
+14:50:12 [200] /terminals/card-machine/ 4ms
+14:50:32 [200] /terminals/card-machine/ 3ms
+14:50:56 [200] /terminals/card-machine/ 2ms
+14:53:07 [200] /terminals/card-machine/ 4ms
+14:53:09 [200] /terminals/card-machine/ 2ms
+14:55:17 [200] / 3ms
+14:55:18 [200] /terminals/card-machine/ 2ms
+14:55:19 [200] /cases/ 3ms
+14:55:55 [watch] src/data/cardMachine.ts
+14:55:56 [200] /cases/ 2ms
+14:55:56 [200] /terminals/card-machine/ 5ms
+14:58:06 [200] /cases/ 2ms
+14:58:09 [200] /terminals/card-machine/ 2ms
+15:00:49 [watch] src/pages/terminals/card-machine/index.astro
+15:00:49 [200] /terminals/card-machine/ 3ms
+15:00:50 [200] /terminals/card-machine/ 2ms
+15:00:51 [200] /terminals/card-machine/ 2ms
+15:07:51 [200] /terminals/card-machine/ 3ms
+15:07:54 [watch] src/pages/terminals/card-machine/index.astro
+15:07:54 [200] /terminals/card-machine/ 4ms
+15:07:54 [200] /terminals/card-machine/ 5ms
+15:07:54 [200] /terminals/card-machine/ 2ms
+15:07:56 [200] /terminals/card-machine/ 2ms
+15:07:56 [200] /terminals/card-machine/ 2ms
+15:07:56 [200] /terminals/card-machine/ 2ms
+15:07:56 [200] /terminals/card-machine/ 3ms
+15:07:57 [200] /terminals/card-machine/ 2ms
+15:07:57 [200] /terminals/card-machine/ 2ms
+15:08:18 [watch] src/pages/terminals/card-machine/index.astro
+15:08:18 [200] /terminals/card-machine/ 4ms
+15:08:18 [200] /terminals/card-machine/ 2ms
+15:08:35 [watch] src/pages/terminals/card-machine/index.astro
+15:08:35 [200] /terminals/card-machine/ 3ms
+15:08:35 [200] /terminals/card-machine/ 4ms
+15:08:50 [watch] src/pages/terminals/card-machine/index.astro
+15:08:50 [200] /terminals/card-machine/ 2ms
+15:08:51 [200] /terminals/card-machine/ 3ms
+15:30:56 [watch] src/data/cardMachine.ts
+15:30:56 [200] /terminals/card-machine/ 3ms
+15:30:56 [200] /terminals/card-machine/ 7ms
+15:31:01 [200] /terminals/card-machine/ 2ms
+15:31:35 [watch] src/data/cardMachine.ts
+15:31:35 [200] /terminals/card-machine/ 3ms
+15:31:36 [200] /terminals/card-machine/ 3ms
+15:32:11 [watch] src/data/cardMachine.ts
+15:32:11 [200] /terminals/card-machine/ 3ms
+15:32:12 [200] /terminals/card-machine/ 6ms
+15:32:14 [200] /terminals/card-machine/ 2ms
+15:36:19 [watch] src/pages/terminals/card-machine/index.astro
+15:36:20 [200] /terminals/card-machine/ 6ms
+15:36:20 [200] /terminals/card-machine/ 7ms
+15:36:26 [watch] src/pages/terminals/card-machine/index.astro
+15:36:26 [200] /terminals/card-machine/ 5ms
+15:36:26 [200] /terminals/card-machine/ 5ms
+15:36:48 [watch] src/pages/terminals/card-machine/index.astro
+15:36:48 [200] /terminals/card-machine/ 3ms
+15:36:48 [200] /terminals/card-machine/ 2ms
+15:36:50 [200] /terminals/card-machine/ 3ms
+15:39:17 [200] /compute/market/ 2ms
+15:46:59 [watch] src/data/cardMachine.ts
+15:47:00 [200] /compute/market/ 2ms
+15:53:05 [watch] src/data/cardMachine.ts
+15:53:06 [200] /compute/market/ 2ms
+15:53:06 [200] /terminals/card-machine/ 5ms
+15:57:35 [200] /terminals/card-machine/ 3ms
+16:02:40 [watch] src/data/cardMachine.ts
+16:02:40 [200] /terminals/card-machine/ 3ms
+16:02:40 [200] /terminals/card-machine/ 4ms
+16:03:04 [watch] src/pages/terminals/card-machine/index.astro
+16:03:05 [200] /terminals/card-machine/ 4ms
+16:03:05 [200] /terminals/card-machine/ 4ms
+16:11:41 [200] /terminals/card-machine/ 4ms
+16:13:22 [200] /terminals/travel-photo/ 2ms
+16:13:23 [200] /terminals/card-machine/ 2ms
+16:13:58 [watch] src/pages/terminals/card-machine/index.astro
+16:13:58 [200] /terminals/card-machine/ 4ms
+16:13:58 [200] /terminals/card-machine/ 4ms
+16:14:41 [watch] src/pages/terminals/card-machine/index.astro
+16:14:41 [200] /terminals/card-machine/ 2ms
+16:14:42 [200] /terminals/card-machine/ 3ms
+16:16:10 [watch] src/pages/terminals/card-machine/index.astro
+16:16:10 [200] /terminals/card-machine/ 2ms
+16:16:10 [200] /terminals/card-machine/ 4ms
+16:18:05 [watch] src/pages/terminals/card-machine/index.astro
+16:18:05 [200] /terminals/card-machine/ 2ms
+16:18:06 [200] /terminals/card-machine/ 3ms
+16:18:42 [watch] src/data/cardMachine.ts
+16:18:43 [200] /terminals/card-machine/ 12ms
+16:18:43 [200] /terminals/card-machine/ 7ms
+16:19:17 [watch] src/data/cardMachine.ts
+16:19:18 [200] /terminals/card-machine/ 2ms
+16:19:18 [200] /terminals/card-machine/ 2ms
+16:19:35 [watch] src/data/cardMachine.ts
+16:19:35 [200] /terminals/card-machine/ 2ms
+16:19:35 [200] /terminals/card-machine/ 4ms
+16:19:56 [watch] src/data/cardMachine.ts
+16:19:56 [200] /terminals/card-machine/ 3ms
+16:19:56 [200] /terminals/card-machine/ 4ms
+16:21:50 [watch] src/data/cardMachine.ts
+16:21:50 [200] /terminals/card-machine/ 3ms
+16:21:51 [200] /terminals/card-machine/ 2ms
+16:22:06 [watch] src/data/cardMachine.ts
+16:22:06 [200] /terminals/card-machine/ 5ms
+16:22:07 [200] /terminals/card-machine/ 2ms
+16:22:55 [200] /terminals/travel-photo/ 3ms
+16:23:00 [200] /terminals/card-machine/ 2ms
+16:23:01 [200] /terminals/travel-photo/ 2ms
+16:23:02 [200] /terminals/card-machine/ 2ms
+16:25:14 [200] /about/ 2ms
+16:25:19 [200] / 3ms
+16:25:53 [200] /compute/market/ 2ms
+16:26:14 [200] /models/ 2ms
+16:33:35 [200] /compute/market/ 2ms
+16:33:37 [200] /models/ 3ms
+16:33:38 [200] /rental/ 2ms
+16:33:38 [200] /models/ 4ms
+16:56:22 [200] /models/ 2ms
+16:56:27 [200] /models/ 2ms
+16:56:30 [200] /models/ 1ms
+16:56:35 [200] /about/ 3ms
+16:56:37 [200] / 3ms
+16:56:37 [200] /compute/market/ 3ms
+16:56:39 [200] /models/ 2ms
+16:56:41 [200] /rental/ 4ms
+16:56:42 [200] /models/ 2ms
+16:56:54 [200] /models/ 2ms
+16:58:22 [watch] src/data/compute.ts
+16:58:23 [200] /terminals/card-machine/ 2ms
+17:10:21 [watch] src/data/compute.ts
+17:10:21 [200] /terminals/card-machine/ 5ms
+17:10:21 [200] / 5ms
+17:12:03 [watch] src/pages/models/index.astro
+17:12:04 [200] /terminals/card-machine/ 2ms
+17:12:04 [200] / 2ms
+17:12:40 [watch] src/pages/models/index.astro
+17:12:40 [200] /terminals/card-machine/ 4ms
+17:12:40 [200] / 3ms
+17:13:35 [200] /compute/market/ 3ms
+17:13:37 [200] /models/ 3ms
+17:18:53 [200] /about/ 2ms
+17:19:11 [200] /rental/ 2ms
+17:19:12 [200] /models/ 2ms
+17:26:22 [watch] src/pages/models/index.astro
+17:26:22 [200] /terminals/card-machine/ 5ms
+17:26:22 [200] /models/ 3ms
+17:26:50 [watch] src/pages/models/index.astro
+17:26:51 [200] /models/ 2ms
+17:26:51 [200] /terminals/card-machine/ 4ms
+17:28:51 [200] /terminals/card-machine/ 2ms
+17:28:54 [200] /compute/market/ 2ms
+17:28:56 [200] /rental/ 2ms
+17:28:57 [200] /models/ 2ms
+17:29:02 [200] /compute/market/ 2ms
+17:29:03 [200] /models/ 3ms
+17:30:55 [watch] src/data/compute.ts
+17:30:55 [200] /models/ 2ms
+17:31:26 [watch] src/data/compute.ts
+17:31:26 [200] /models/ 2ms
+17:31:48 [watch] src/data/compute.ts
+17:31:48 [200] /models/ 2ms
+17:31:58 [watch] src/data/compute.ts
+17:31:58 [200] /models/ 3ms
+17:34:42 [watch] src/pages/models/index.astro
+17:34:42 [200] /models/ 2ms
+17:34:59 [watch] src/pages/models/index.astro
+17:34:59 [200] /models/ 2ms
+17:35:33 [watch] src/data/compute.ts
+17:35:33 [200] /models/ 3ms
+17:35:49 [watch] src/data/compute.ts
+17:35:49 [200] /models/ 3ms
+17:36:02 [watch] src/data/compute.ts
+17:36:02 [200] /models/ 2ms
+17:36:09 [watch] src/data/compute.ts
+17:36:09 [200] /models/ 3ms
+17:36:29 [watch] src/data/compute.ts
+17:36:29 [200] /models/ 2ms
+17:37:14 [watch] src/pages/models/index.astro
+17:37:14 [200] /models/ 2ms
+17:38:50 [watch] src/pages/models/index.astro
+17:38:50 [200] /models/ 3ms
+17:39:55 [200] /compute/market/ 2ms
+17:44:09 [200] /rental/ 2ms
+17:44:13 [200] /models/ 2ms
+17:44:16 [200] /compute/market/ 2ms
+17:44:17 [200] /models/ 3ms
+17:44:18 [200] /rental/ 3ms
+17:44:18 [200] / 3ms
+17:45:10 [watch] src/pages/models/index.astro
+17:45:10 [200] / 2ms
+17:45:10 [watch] src/pages/models/index.astro
+17:45:10 [watch] src/pages/models/index.astro
+17:45:11 [200] / 2ms
+17:53:56 [200] /terminals/card-machine/ 5ms
+17:53:57 [200] /terminals/card-machine/ 2ms
+17:54:00 [200] /terminals/card-machine/ 2ms
+17:54:18 [200] /compute/market/ 2ms
+17:54:20 [200] /models/ 2ms
+17:54:23 [200] /compute/market/ 2ms
+17:54:24 [200] /models/ 2ms
+17:54:24 [200] /rental/ 2ms
+17:54:25 [200] /models/ 2ms
+18:24:29 [200] /terminals/travel-photo/ 2ms
+18:24:31 [200] /terminals/card-machine/ 3ms
+18:24:33 [200] /terminals/travel-photo/ 4ms
+18:24:33 [200] /compute/market/ 2ms
+18:24:34 [200] / 2ms
+18:24:35 [200] /compute/market/ 2ms
+18:24:36 [200] /terminals/travel-photo/ 2ms
+18:24:36 [200] /terminals/card-machine/ 2ms
+18:24:37 [200] /cases/ 5ms
+18:24:39 [200] /about/ 1ms
+18:24:39 [200] /cases/ 2ms
+19:21:38 [200] /terminals/card-machine/ 3ms
+19:21:42 [200] /terminals/travel-photo/ 2ms
+19:21:47 [200] /terminals/card-machine/ 4ms
+19:21:50 [200] /terminals/travel-photo/ 2ms
+19:21:57 [200] /compute/market/ 2ms
+19:26:33 [200] /rental/ 2ms
+19:26:38 [200] /compute/market/ 2ms
+19:26:58 [200] /models/ 2ms
+19:27:00 [200] /compute/market/ 2ms
+19:28:26 [watch] src/data/compute.ts
+19:28:26 [200] /compute/market/ 3ms
+19:31:34 [watch] src/data/compute.ts
+19:31:34 [200] /compute/market/ 3ms
+19:32:02 [watch] src/data/compute.ts
+19:32:02 [200] /compute/market/ 2ms
+19:33:55 [watch] src/data/compute.ts
+19:33:55 [200] /compute/market/ 2ms
+19:36:01 [watch] src/data/compute.ts
+19:36:01 [200] /compute/market/ 2ms
+19:36:15 [watch] src/data/compute.ts
+19:36:15 [200] /compute/market/ 2ms
+19:37:44 [watch] src/pages/compute/market/index.astro
+19:37:44 [200] /compute/market/ 2ms
+19:38:00 [watch] src/pages/compute/market/index.astro
+19:38:00 [200] /compute/market/ 2ms
+19:39:25 [watch] src/pages/compute/market/index.astro
+19:39:25 [200] /compute/market/ 3ms
+19:40:16 [200] /models/ 3ms
+19:40:17 [200] /compute/market/ 2ms
+19:40:18 [200] /models/ 5ms
+19:40:19 [200] /rental/ 4ms
+19:40:23 [200] /compute/market/ 2ms
+19:40:26 [200] /models/ 2ms
+19:40:27 [200] /rental/ 4ms
+19:40:28 [200] /compute/market/ 2ms
+19:40:29 [200] /models/ 5ms
+19:40:29 [200] /rental/ 3ms
+19:40:30 [200] /compute/market/ 2ms
+19:40:57 [200] /models/ 2ms
+19:41:23 [200] /rental/ 4ms
+19:41:49 [200] /compute/market/ 4ms
+19:44:18 [watch] src/data/compute.ts
+19:44:18 [200] /compute/market/ 2ms
+19:44:53 [watch] src/data/compute.ts
+19:44:53 [200] /compute/market/ 4ms
+19:45:06 [200] /rental/ 3ms
+19:45:22 [200] /rental/h100-8/ 2ms
+19:45:31 [200] /rental/ 4ms
+19:45:32 [200] /rental/rtx4090-1/ 2ms
+19:45:34 [200] /rental/ 3ms
+19:45:35 [200] /rental/rtx4090-4/ 2ms
+19:45:37 [200] /rental/ 2ms
+19:45:39 [200] /rental/h100-8/ 2ms
+19:45:41 [200] /rental/ 4ms
+19:47:03 [watch] src/pages/rental/index.astro
+19:47:03 [200] /rental/ 3ms
+19:47:18 [watch] src/pages/rental/index.astro
+19:47:18 [200] /rental/ 3ms
+19:49:19 [200] /compute/market/ 2ms
+19:49:20 [200] /models/ 2ms
+19:49:25 [200] /rental/ 2ms
+19:49:26 [200] /models/ 2ms
+19:49:28 [200] /compute/market/ 2ms
+19:49:29 [200] /models/ 3ms
+19:49:29 [200] /rental/ 2ms
+19:49:30 [200] /models/ 2ms
+19:49:33 [200] /rental/ 4ms
+19:49:46 [watch] src/data/rental.ts
+19:49:46 [200] /rental/ 2ms
+19:49:52 [200] /rental/b300-8/ 2ms
+19:50:45 [200] / 2ms
+19:50:47 [200] /compute/market/ 2ms
+19:50:48 [200] /terminals/travel-photo/ 2ms
+19:50:49 [200] /terminals/card-machine/ 4ms
+19:50:49 [200] /cases/ 4ms
+19:50:50 [200] /about/ 1ms
+19:50:51 [200] / 1ms
+19:50:52 [200] /compute/market/ 4ms
+19:50:53 [200] /terminals/travel-photo/ 2ms
+19:50:53 [200] /terminals/card-machine/ 3ms
+19:50:54 [200] /cases/ 2ms
+19:50:54 [200] /about/ 3ms
+19:50:55 [200] / 4ms
+19:51:46 [200] /terminals/ 3ms
+19:51:49 [200] /terminals/card-machine/ 3ms
+19:51:51 [200] / 3ms
+19:51:52 [200] /terminals/ 2ms
+19:51:55 [200] /terminals/travel-photo/ 2ms
+19:51:56 [200] /about/ 2ms
+19:51:58 [200] / 2ms
+19:51:58 [200] / 4ms
+19:52:02 [200] /about/ 2ms
+19:52:03 [200] / 2ms
+19:57:21 [200] /compute/market/ 4ms
+19:57:23 [200] /models/ 2ms
+19:57:27 [200] /rental/ 2ms
+19:57:29 [200] /models/ 2ms
+19:57:52 [200] /terminals/travel-photo/ 3ms
+19:58:33 [200] / 2ms
+19:58:42 [watch] src/data/site.ts
+19:59:01 [watch] src/data/site.ts
+19:59:02 [200] / 2ms
+19:59:21 [watch] src/pages/index.astro
+19:59:22 [404] / 0ms
+19:59:50 [watch] src/pages/index.astro
+20:13:29 [200] / 2ms
+20:13:56 [200] / 2ms
+20:13:58 [200] / 2ms
+20:14:00 [200] / 2ms
+20:14:11 [200] /terminals/ 2ms
+20:14:13 [200] /terminals/card-machine/ 3ms
+20:14:14 [200] /about/ 2ms
+20:14:15 [200] / 2ms
+20:14:16 [200] / 4ms
+20:15:00 [watch] src/data/rental.ts
+20:15:01 [200] / 4ms
+20:26:53 [watch] src/pages/index.astro
+20:26:54 [404] / 0ms
+20:27:37 [watch] src/pages/index.astro
+20:29:55 [200] / 4ms
+20:30:25 [200] /terminals/ 2ms
+20:30:31 [200] /terminals/card-machine/ 6ms
+20:30:32 [200] /terminals/travel-photo/ 5ms
+20:30:33 [200] / 4ms
+20:30:34 [200] / 4ms
+20:30:49 [200] /terminals/travel-photo/ 2ms
+20:30:52 [200] /terminals/card-machine/ 3ms
+20:30:55 [200] /terminals/travel-photo/ 2ms
+20:30:58 [200] /terminals/card-machine/ 3ms
+20:32:16 [200] /compute/market/ 2ms
+20:32:18 [200] /terminals/travel-photo/ 2ms
+20:32:22 [200] /terminals/card-machine/ 2ms
+20:32:26 [200] /terminals/travel-photo/ 2ms
+20:32:27 [200] /terminals/card-machine/ 2ms
+20:32:28 [200] /about/ 3ms
+20:32:33 [200] / 3ms
+20:33:08 [200] / 2ms
+20:33:31 [200] /compute/market/ 2ms
+20:33:40 [200] /models/ 2ms
+20:33:45 [200] /rental/ 2ms
+20:33:49 [200] /rental/a800-8/ 2ms
+20:33:52 [200] /terminals/card-machine/ 4ms
+20:34:26 [200] /cases/ 2ms
+20:34:26 [200] /about/ 3ms
+20:34:42 [200] / 3ms
+20:37:28 [200] /compute/market/ 3ms
+20:37:29 [200] /models/ 4ms
+20:37:30 [200] /rental/ 4ms
+20:37:32 [200] /models/ 2ms
+20:37:42 [200] /compute/market/ 4ms
+20:37:43 [200] /models/ 3ms
+20:37:43 [200] /rental/ 2ms
+20:37:44 [200] /compute/market/ 3ms
+20:37:45 [200] /models/ 4ms
+20:37:45 [200] /rental/ 4ms
+20:37:46 [200] /compute/market/ 2ms
+20:37:55 [200] / 4ms
+20:40:20 [200] / 1ms
+20:41:37 [200] /compute/market/ 5ms
+20:41:39 [200] /models/ 4ms
+20:41:40 [200] /rental/ 1ms
+20:41:49 [200] /compute/market/ 1ms
+11:30:29 [200] /compute/market/ 5ms
