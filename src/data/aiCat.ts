@@ -42,53 +42,68 @@ export const aiCatFlow = [
   }
 ];
 
-export const aiCatScenes = [
+export const aiCatCaseWall = [
   {
-    title: "茶饮门店引流",
-    description: "适合门口流量高、年轻客群集中、需要强化进店互动的茶饮与轻餐门店。",
-    imageSrc: "/assets/cat-bot/storefront-01.png",
-    imageAlt: "林里柠檬茶门店场景"
+    src: "/assets/cat-bot/01.png",
+    alt: "AI机器猫商场门店引流案例"
   },
   {
-    title: "品牌联名活动",
-    description: "适合新品上市、节日快闪、主题活动等短周期传播场景，提升打卡感和话题度。",
-    imageSrc: "/assets/cat-bot/social-scene.png",
-    imageAlt: "年轻用户在门店自拍互动"
+    src: "/assets/cat-bot/02.png",
+    alt: "AI机器猫餐饮门店互动案例"
   },
   {
-    title: "会员互动入口",
-    description: "适合把发券、拍照、明卡、入群等动作组合成一套完整的互动转化链路。",
-    imageSrc: "/assets/cat-bot/postcard-terminal.png",
-    imageAlt: "机器猫明卡互动终端"
+    src: "/assets/cat-bot/03.png",
+    alt: "AI机器猫品牌联名活动案例"
+  },
+  {
+    src: "/assets/cat-bot/04.png",
+    alt: "AI机器猫活动会展案例"
+  },
+  {
+    src: "/assets/cat-bot/05.png",
+    alt: "AI机器猫商业空间互动案例"
+  },
+  {
+    src: "/assets/cat-bot/06.png",
+    alt: "AI机器猫门店运营案例"
+  },
+  {
+    src: "/assets/cat-bot/07.png",
+    alt: "AI机器猫文旅体验点案例"
   }
 ];
 
-export const aiCatCapabilities = [
-  "可定制角色形象、话术与品牌语境",
-  "支持主动招呼、互动对话与动作展示",
-  "支持优惠券、明卡、拍照与会员动作联动",
-  "适配门店、快闪、商业活动等前场部署"
-];
-
-export const aiCatGallery = [
+export const aiCatScenarioCards = [
   {
-    src: "/assets/cat-bot/storefront-02.png",
-    alt: "林里柠檬茶真实门店",
-    caption: "门店场景"
+    title: "茶饮门店引流",
+    description: "适合门口高流量区域，吸引年轻用户驻足拍照互动，增加到店率和消费转化。"
   },
   {
-    src: "/assets/cat-bot/mascot-hero.png",
-    alt: "AI机器猫形象效果图",
-    caption: "角色形象"
+    title: "品牌联名活动",
+    description: "适合新品上市、节日快闪、主题活动等短周期传播场景，提升打卡感和话题度。"
   },
   {
-    src: "/assets/cat-bot/postcard-terminal.png",
-    alt: "明卡打印互动终端",
-    caption: "互动输出"
+    title: "会员互动入口",
+    description: "支持发券、拍照、明卡、入群等动作组合，形成完整的会员互动与转化链路。"
   },
   {
-    src: "/assets/cat-bot/merch-scene.png",
-    alt: "门店周边与陈列",
-    caption: "联动陈列"
+    title: "商场中庭点位",
+    description: "适合中庭、通道等核心人流区域，形成自然停留与互动，提升品牌曝光和用户体验。"
+  },
+  {
+    title: "活动会展场景",
+    description: "适用于展会、线下活动、快闪体验，增强互动性与现场参与感，提高活动趣味性。"
+  },
+  {
+    title: "餐饮快闪/连锁门店",
+    description: "支持快闪店和连锁门店同时运营，统一品牌体验，强化用户记忆和社交分享。"
+  },
+  {
+    title: "校园/文旅体验点",
+    description: "面向年轻人群体和游客，提供互动、拍照、教育或娱乐类内容，提升场景趣味性和参与感。"
+  },
+  {
+    title: "沉浸式互动空间",
+    description: "可结合数字化环境、AR/VR内容，形成前场闭环互动体验，增强品牌科技感。"
   }
 ];

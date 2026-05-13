@@ -4,7 +4,6 @@ import SectionTitle from "../../components/SectionTitle.astro";
 import ComputeTabs from "../../components/ComputeTabs.astro";
 import {
   modelAccessModes,
-  modelCategories,
   modelEcosystemProviders,
   modelMarketHighlights,
   models
@@ -12,19 +11,21 @@ import {
 ---
 
 <BaseLayout title="模型市场">
-  <section class="page-section">
+  <section class="page-section model-intro-section">
     <div class="shell">
       <ComputeTabs />
+
       <SectionTitle
         eyebrow="MODEL MARKET"
         title="整合主流大模型能力，提供可落地的行业应用方案"
         description="支持多模型接入与能力组合，结合实际业务场景，完成从模型调用到产品落地的整体交付。"
       />
 
-      
 
       <div class="tag-list" style="margin-top: 20px; margin-bottom: 10px;">
-        {modelEcosystemProviders.map((item) => <span class="tag">{item}</span>)}
+        {modelEcosystemProviders.map((item) => (
+          <span class="tag">{item}</span>
+        ))}
       </div>
 
       <p class="model-market-note">
@@ -33,16 +34,13 @@ import {
       </p>
     </div>
   </section>
-  <section class="page-section">
+
+
+
+  <section class="page-section model-grid-section">
     <div class="shell">
-      <SectionTitle
-        eyebrow="MODEL MATRIX"
-        title="支持对接主流模型能力，具体方案根据项目需求定制"
-        description="不仅展示模型能力，更明确接入方式、应用场景与交付路径，支持企业从能力选择到项目落地。"
-      />
-      <div class="tag-list" style="margin-bottom: 18px;">
-        {modelCategories.map((item) => <span class="tag">{item}</span>)}
-      </div>
+
+
       <div class="card-grid">
         {models.map((model) => (
           <article class="info-card model-card">
@@ -50,11 +48,15 @@ import {
             <h3>{model.name}</h3>
             <p class="model-provider">{model.provider}</p>
             <p class="model-version">{model.version}</p>
+
             <div class="tag-list model-card-tags">
               <span class="tag">{model.status}</span>
               <span class="tag">{model.delivery}</span>
-              {model.tags.map((item) => <span class="tag">{item}</span>)}
+              {model.tags.map((item) => (
+                <span class="tag">{item}</span>
+              ))}
             </div>
+
             <p class="model-copy">{model.capability}</p>
             <p>适用场景：{model.scenario}</p>
             <a href="/about/#contact">咨询接入</a>

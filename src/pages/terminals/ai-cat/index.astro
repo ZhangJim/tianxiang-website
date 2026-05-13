@@ -3,17 +3,16 @@ import BaseLayout from "../../../layouts/BaseLayout.astro";
 import SectionTitle from "../../../components/SectionTitle.astro";
 import {
   aiCatAdvantages,
-  aiCatCapabilities,
+  aiCatCaseWall,
   aiCatFlow,
-  aiCatGallery,
   aiCatHighlights,
-  aiCatScenes
+  aiCatScenarioCards
 } from "../../../data/aiCat";
 ---
 
 <BaseLayout
   title="AI机器猫"
-  description="面向茶饮门店、商业快闪与品牌联名场景的 AI 引流机器人，支持主动迎宾、互动转化与会员沉淀。"
+  description="面向茶饮门店、商业快闪与品牌联名场景的 AI 引流机器人，支持主动迎宾、互动吸引与会员沉淀。"
 >
   <section class="cat-hero">
     <div class="shell cat-hero-grid">
@@ -24,25 +23,19 @@ import {
           面向茶饮门店、商业快闪与品牌联名场景，提供主动迎宾、互动吸引、拍照发券与会员沉淀的一体化前场装置。
         </p>
         <div class="tag-list cat-hero-tags">
-          <span class="tag">门店前场引流</span>
-          <span class="tag">互动转化装置</span>
-          <span class="tag">品牌联名场景</span>
-          <span class="tag">会员沉淀入口</span>
+          <span class="tag">门前引流</span>
+          <span class="tag">互动转化</span>
+          <span class="tag">品牌联名</span>
+          <span class="tag">会员沉淀</span>
         </div>
         <div class="hero-actions">
           <a class="button button-primary" href="/about/#contact">咨询项目合作</a>
-          <a class="button button-secondary" href="#cat-scenes">查看适用场景</a>
+          <a class="button button-secondary" href="#cat-scenarios">查看适配场景</a>
         </div>
       </div>
       <div class="cat-hero-visual">
-        <figure class="cat-hero-main">
-          <img src="/assets/cat-bot/storefront-01.png" alt="AI机器猫适配茶饮门店场景" />
-        </figure>
-        <figure class="cat-hero-side cat-hero-side-top">
-          <img src="/assets/cat-bot/mascot-hero.png" alt="AI机器猫角色形象" />
-        </figure>
-        <figure class="cat-hero-side cat-hero-side-bottom">
-          <img src="/assets/cat-bot/social-scene.png" alt="年轻用户在门店互动拍照" />
+        <figure class="cat-hero-main cat-hero-single">
+          <img src="/assets/cat-bot/01.png" alt="AI机器猫门店引流场景" />
         </figure>
       </div>
     </div>
@@ -100,7 +93,7 @@ import {
         </div>
       </div>
       <div class="cat-flow-visual">
-        <img src="/assets/cat-bot/postcard-terminal.png" alt="AI机器猫互动终端与明卡输出" />
+        <img src="/assets/cat-bot/postcard-terminal.png" alt="AI机器猫互动终端与明信片输出" />
       </div>
     </div>
   </section>
@@ -108,46 +101,33 @@ import {
   <section class="page-section" id="cat-scenes">
     <div class="shell">
       <SectionTitle
-        eyebrow="SCENARIOS"
-        title="适合门店引流、联名快闪与品牌互动"
-        description="更适合客流密集、年轻用户活跃、需要持续制造内容和话题的线下场景。"
+        eyebrow="CASE WALL"
+        title="案例墙"
+        description="展示 AI 机器猫在门店、商业空间与活动场景中的实际落地效果。"
       />
-      <div class="cat-scene-grid">
-        {aiCatScenes.map((item) => (
-          <article class="cat-scene-card">
-            <div class="cat-scene-media">
-              <img src={item.imageSrc} alt={item.imageAlt} loading="lazy" />
-            </div>
-            <div class="cat-scene-copy">
-              <h3>{item.title}</h3>
-              <p>{item.description}</p>
-            </div>
-          </article>
+      <div class="cat-case-wall">
+        {aiCatCaseWall.map((item, index) => (
+          <figure class:list={["cat-case-item", index === 0 && "large", index === 4 && "wide"]}>
+            <img src={item.src} alt={item.alt} loading="lazy" />
+          </figure>
         ))}
       </div>
     </div>
   </section>
 
-  <section class="page-section">
-    <div class="shell cat-capability-grid">
-      <div class="cat-capability-panel">
-        <p class="eyebrow">CAPABILITIES</p>
-        <h2>支持角色、互动、内容与运营动作联动</h2>
-        <div class="cat-capability-list">
-          {aiCatCapabilities.map((item) => (
-            <div class="cat-capability-item">
-              <span></span>
-              <p>{item}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-      <div class="cat-gallery-grid">
-        {aiCatGallery.map((item) => (
-          <figure class="cat-gallery-item">
-            <img src={item.src} alt={item.alt} loading="lazy" />
-            <figcaption>{item.caption}</figcaption>
-          </figure>
+  <section class="page-section" id="cat-scenarios">
+    <div class="shell">
+      <SectionTitle
+        eyebrow="SCENARIOS"
+        title="适配场景"
+        description="适合门店引流、品牌快闪、商业点位与年轻用户互动场景。"
+      />
+      <div class="cat-scenario-grid">
+        {aiCatScenarioCards.map((item) => (
+          <article class="info-card cat-scenario-card">
+            <h3>{item.title}</h3>
+            <p>{item.description}</p>
+          </article>
         ))}
       </div>
     </div>

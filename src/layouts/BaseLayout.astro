@@ -49,16 +49,32 @@ const currentPath = Astro.url.pathname;
     </main>
     <footer class="site-footer">
       <div class="shell footer-grid">
-        <div>
-          <p class="eyebrow">AI SOLUTIONS</p>
-          <h2>{company.shortName}</h2>
-          <p>{company.description}</p>
+        <div class="footer-brand-block">
+          <div class="footer-brand-head">
+            <div class="footer-brand-meta">
+              <p class="footer-overline">AI SOLUTIONS</p>
+              <h2>{company.name}</h2>
+            </div>
+          </div>
+          <p class="footer-brand-title">{company.footerTitle}</p>
+          <p class="footer-brand-copy">{company.footerDescription}</p>
         </div>
-        <div>
-          <p class="footer-title">联系方式</p>
-          <p>{company.phone}</p>
-          <p>{company.email}</p>
-          <p>{company.address}</p>
+        <div class="footer-contact-block">
+          <p class="footer-title">联系信息</p>
+          <div class="footer-contact-list">
+            <div class="footer-contact-item">
+              <span>邮箱</span>
+              <a href={`mailto:${company.email}`}>{company.email}</a>
+            </div>
+            <div class="footer-contact-item">
+              <span>地址</span>
+              <p>{company.address}</p>
+            </div>
+            <div class="footer-contact-item">
+              <span>备案</span>
+              <p class="footer-icp">{company.icp}</p>
+            </div>
+          </div>
         </div>
       </div>
     </footer>

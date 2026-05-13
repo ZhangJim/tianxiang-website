@@ -1,37 +1,107 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import SectionTitle from "../../components/SectionTitle.astro";
 import { company } from "../../data/site";
+
+const capabilityCards = [
+  {
+    icon: "▣",
+    title: "AI 算力与模型服务",
+    description: "提供算力资源、模型接入与整机租赁支持，服务训练、推理、企业部署与项目交付。"
+  },
+  {
+    icon: "◫",
+    title: "AI 互动终端产品",
+    description: "围绕 AI 旅拍机、AI 潮玩卡牌机、AI 机器猫等产品，面向文旅、商业空间和门店场景落地。"
+  },
+  {
+    icon: "◇",
+    title: "场景方案与运营交付",
+    description: "从方案设计、内容定制、设备部署到现场运营支持，帮助客户把 AI 能力转化为真实体验。"
+  }
+];
+
+const systemItems = ["算法能力", "应用产品", "智能终端", "算力资源", "现场交付", "长期运营"];
 ---
 
 <BaseLayout title="关于我们">
-  <section class="page-section">
+  <section class="page-section about-page-section">
     <div class="shell">
-      <SectionTitle
-        eyebrow="ABOUT"
-        title="让AI内容与设备，在真实场景中持续产生价值"
-        description="我们专注于文旅与商业场景的 AI 内容与终端落地，
-从内容生成、设备部署到长期运营，帮助客户实现“体验 + 转化 + 传播”的一体化闭环。"
-      />
-      <div class="two-column">
-        <article class="info-card">
-          <h3>{company.name}</h3>
-          <p>{company.description}</p>
+      <section class="about-hero about-hero-banner">
+        <div class="about-hero-visual">
+          <img src="/assets/branding/001.png" alt="AI 与商业空间融合场景" />
+          <div class="about-hero-overlay" aria-hidden="true"></div>
+          <div class="about-hero-glow about-hero-glow-a" aria-hidden="true"></div>
+          <div class="about-hero-glow about-hero-glow-b" aria-hidden="true"></div>
+          <div class="about-hero-stream about-hero-stream-a" aria-hidden="true"></div>
+          <div class="about-hero-stream about-hero-stream-b" aria-hidden="true"></div>
+          <div class="about-hero-particles" aria-hidden="true"></div>
+        </div>
+
+        <div class="about-hero-copy">
+          <p class="eyebrow">关于我们</p>
+          <h1>让 AI 能力进入真实场景，并持续产生价值</h1>
+          <p class="about-lead">
+            {company.name}专注于 AI 大模型与 AI 应用的产业化落地，
+            围绕“算力 + 模型 + 终端 + 场景”构建完整业务体系，
+            为企业、文旅项目与商业空间提供可交付的 AI 解决方案。
+          </p>
+          <div class="about-divider" aria-hidden="true">
+            <span></span>
+            <i></i>
+          </div>
+        </div>
+      </section>
+
+      <section class="about-capability-grid">
+        {capabilityCards.map((item) => (
+          <article class="info-card about-capability-card">
+            <div class="about-icon">{item.icon}</div>
+            <div>
+              <h3>{item.title}</h3>
+              <p>{item.description}</p>
+            </div>
+          </article>
+        ))}
+      </section>
+
+      <section class="about-story-grid">
+        <article class="info-card about-story-card">
+          <div class="about-story-head">
+            <div class="about-icon about-icon-small">◈</div>
+            <div>
+              <p class="card-meta">我们的能力</p>
+              <h3>算法、应用、终端与算力协同交付</h3>
+            </div>
+          </div>
+          <p>
+            公司围绕大模型能力，形成从技术能力到应用产品，再到现场设备与运营服务的完整闭环。
+            这使我们既能提供 AI 算力与模型服务，也能完成文旅和商业空间中的智能终端落地。
+          </p>
           <div class="tag-list">
-            <span class="tag">算法</span>
-            <span class="tag">应用</span>
-            <span class="tag">终端</span>
-            <span class="tag">算力</span>
+            {systemItems.map((item) => (
+              <span class="tag">{item}</span>
+            ))}
           </div>
         </article>
-        <article class="info-card" id="contact">
-          <h3>商务联系</h3>
-          <p>电话：{company.phone}</p>
-          <p>邮箱：{company.email}</p>
-          <p>地址：{company.address}</p>
-          <p>可用于项目咨询、方案合作、资源租赁与设备投放。</p>
+
+        <article class="info-card about-story-card about-story-quote">
+          <div class="about-story-head">
+            <div class="about-icon about-icon-small">☆</div>
+            <div>
+              <p class="card-meta">我们的价值</p>
+              <h3>更关注能否真实落地</h3>
+            </div>
+          </div>
+          <p>
+            官网展示的每一条业务，最终都要回到项目现场：是否能部署、是否能运行、是否能被用户理解、
+            是否能帮助客户获得互动、传播或业务转化。
+          </p>
+          <p>
+            这是天翔睿翼做 AI 算力服务与智能终端产品的共同判断标准。
+          </p>
+          <div class="about-quote-mark" aria-hidden="true">”</div>
         </article>
-      </div>
+      </section>
     </div>
   </section>
 </BaseLayout>

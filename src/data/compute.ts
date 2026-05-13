@@ -60,7 +60,7 @@ export const marketItems = [
     storage: "1 TB + 8 TB",
     cuda: "12.4",
     // stock: "0 / 8 可用",
-    price: "￥15.00 / 时",
+    price: "￥19.90 / 时",
     note: "面向高性能训练、复杂推理和大规模并发场景。"
   },
   {
@@ -80,31 +80,14 @@ export const marketItems = [
     memory: "128 GB",
     storage: "200 GB + 3 TB",
     cuda: "12.4+",
-    price: "￥3.50 / 时",
+    price: "￥5.90 / 时",
     note: "适合图像生成、高性能推理与中等规模训练任务。"
-  },
-  {
-    name: "RTX4090 24GB",
-    region: "北京",
-    cpu: "8 核",
-    memory: "48 GB",
-    storage: "100 GB + 2480 GB",
-    cuda: "12.8",
-    // stock: "2 / 8 可用",
-    price: "￥1.88 / 时",
-    note: "适合图像生成、轻量训练与推理部署。"
-  },
-
+  }
  
 ];
 
 export const modelCategories = [
-  "旗舰对话模型",
-  "推理与代码模型",
-  "多模态模型",
-  "视觉与图像模型",
-  "开源部署模型",
-  "行业定制模型"
+
 ];
 
 export const modelEcosystemProviders = [
@@ -118,39 +101,26 @@ export const modelEcosystemProviders = [
   "xAI Grok"
 ];
 
-export const modelMarketHighlights = [
-  {
-    value: "多模型接入与能力组合",
-    label: "主流模型生态"
-  },
-  {
-    value: "对话 / 推理 / 视觉 / 多模态",
-    label: "热门能力类型"
-  },
-  {
-    value: "API接入与应用开发支持",
-    label: "接入形态"
-  },
-  {
-    value: "场景方案设计与落地交付",
-    label: "项目交付方式"
-  }
-];
+// export const modelMarketHighlights = [
+//   {
+//     value: "多模型接入与能力组合",
+//     label: "主流模型生态"
+//   },
+//   {
+//     value: "对话 / 推理 / 视觉 / 多模态",
+//     label: "热门能力类型"
+//   },
+//   {
+//     value: "API接入与应用开发支持",
+//     label: "接入形态"
+//   },
+//   {
+//     value: "场景方案设计与落地交付",
+//     label: "项目交付方式"
+//   }
+// ];
 
-export const modelAccessModes = [
-  {
-    title: "模型接入与快速验证",
-    description: "支持多模型API调用与能力测试，帮助项目快速启动与验证。"
-  },
-  {
-    title: "业务系统集成",
-    description: "结合企业现有系统，完成模型能力接入与实际业务流程打通。"
-  },
-  {
-    title: "定制化部署方案",
-    description: "根据业务需求提供部署与集成方案（含私有化或专属环境支持）。"
-  }
-];
+
 
 export const models = [
   {

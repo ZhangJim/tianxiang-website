@@ -9,28 +9,35 @@ import { marketFilters, marketItems } from "../../../data/compute";
   <section class="page-section">
     <div class="shell">
       <ComputeTabs />
+
       <SectionTitle
         eyebrow="COMPUTE MARKET"
         title="按需选择算力配置，覆盖训练与推理场景"
-        description="支持多种GPU配置与接入方式，适用于模型训练、推理服务与AI应用开发，满足不同阶段的算力需求。"
+        description="支持多种 GPU 配置与接入方式，适用于模型训练、推理服务与 AI 应用开发，满足不同阶段的算力需求。"
       />
+
       <div class="filter-bar">
         <div class="filter-row">
           <span>计费方式</span>
-          {marketFilters.billing.map((item, index) => <b class:list={["chip", index === 0 && "active"]}>{item}</b>)}
+          <b class:list={["chip", "active"]}>{marketFilters.billing[0]}</b>
+          <p>按需开通 GPU 算力资源，支持小时、日、周等灵活计费方式</p>
         </div>
+
         <div class="filter-row">
           <span>选择地区</span>
-          {marketFilters.regions.map((item, index) => <b class:list={["chip", index === 0 && "active"]}>{item}</b>)}
+          {marketFilters.regions.map((item, index) => (
+            <b class:list={["chip", index === 0 && "active"]}>{item}</b>
+          ))}
         </div>
+
         <div class="filter-row">
           <span>GPU 型号</span>
-          {marketFilters.gpus.map((item, index) => <b class:list={["chip", index === 0 && "active"]}>{item}</b>)}
+          {marketFilters.gpus.map((item, index) => (
+            <b class:list={["chip", index === 0 && "active"]}>{item}</b>
+          ))}
         </div>
-        <div class="filter-row">
-          <span>GPU 数量</span>
-          {marketFilters.cardCounts.map((item, index) => <b class:list={["chip", index === 0 && "active"]}>{item}</b>)}
-        </div>
+
+
       </div>
 
       <div class="list-stack">
@@ -38,23 +45,28 @@ import { marketFilters, marketItems } from "../../../data/compute";
           <article class="list-card">
             <p class="card-meta">{item.region}</p>
             <h3>{item.name}</h3>
+
             <div class="spec-grid">
               <div class="spec-item">
-                <strong>每 GPU 配置</strong>
+                <strong>单 GPU 配置</strong>
                 <p>CPU {item.cpu}</p>
                 <p>内存 {item.memory}</p>
               </div>
+
               <div class="spec-item">
                 <strong>存储配置</strong>
                 <p>{item.storage}</p>
               </div>
+
               <div class="spec-item">
                 <strong>环境版本</strong>
-                <p>CUDA ≤ {item.cuda}</p>
+                <p>CUDA ≥ {item.cuda}</p>
                 <p>{item.stock}</p>
               </div>
             </div>
+
             <p>{item.note}</p>
+
             <div class="price-row">
               <div>
                 <div class="price">{item.price}</div>

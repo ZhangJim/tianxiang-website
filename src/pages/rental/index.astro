@@ -9,39 +9,47 @@ import { rentalMachines } from "../../data/rental";
   <section class="page-section">
     <div class="shell">
       <ComputeTabs />
+
       <SectionTitle
         eyebrow="SERVER RENTAL"
         title="提供多种整机算力方案，支持训练、推理与企业部署"
-        description="面向模型训练、推理服务与企业级AI项目，提供单机、多卡到高性能整机配置，并支持定制化交付。"
+        description="面向模型训练、推理服务与企业级 AI 项目，提供单机、多卡到高性能整机配置，并支持定制化交付。"
       />
+
       <div class="list-stack">
         {rentalMachines.map((machine) => (
           <article class="list-card">
-            <p class="card-meta">{machine.gpu} / {machine.count}</p>
+            <p class="card-meta">
+              {machine.gpu} / {machine.count}
+            </p>
             <h3>{machine.name}</h3>
+
             <div class="spec-grid">
               <div class="spec-item">
                 <strong>基础配置</strong>
                 <p>CPU {machine.cpu}</p>
                 <p>内存 {machine.memory}</p>
               </div>
+
               <div class="spec-item">
                 <strong>存储与网络</strong>
                 <p>{machine.storage}</p>
                 <p>{machine.network}</p>
               </div>
+
               <div class="spec-item">
                 <strong>交付信息</strong>
                 <p>{machine.delivery}</p>
                 <p>{machine.usage}</p>
               </div>
             </div>
+
             <div class="price-row">
               <div>
                 <div class="price">{machine.price}</div>
                 <p>支持按项目沟通租赁周期与运维保障</p>
               </div>
-              <a class="button button-primary" href={`/rental/${machine.slug}/`}>查看详情</a>
+              <a class="button button-primary" href="/about/#contact">商务咨询</a>
             </div>
           </article>
         ))}

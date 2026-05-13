@@ -69,8 +69,8 @@ const partners = [
   { src: "/assets/card-machine/home/kexueyuan.63ebfd1d.png", alt: "中国科学院" },
   { src: "/assets/card-machine/home/zidonghua.979f978b.png", alt: "自动化研究机构" },
   { src: "/assets/card-machine/home/youdian.d134f0b6.png", alt: "北京邮电大学" },
-  { src: "/assets/card-machine/home/hangtian.4b952218.png", alt: "航天合作机构" },
-  { src: "/assets/card-machine/home/dizhenju.17be2e48.png", alt: "地震行业合作机构" }
+  { src: "/assets/card-machine/home/hangtian.4b952218.png", alt: "航天信息" },
+  { src: "/assets/card-machine/home/dizhenju.17be2e48.png", alt: "中国地震局工程力学研究所" }
 ];
 ---
 
@@ -79,16 +79,12 @@ const partners = [
     <div class="shell home-hero-grid">
       <div class="home-hero-copy">
         <p class="eyebrow">XCASTLE AI</p>
-        <h1>AI算力服务与智能终端落地解决方案</h1>
+        <h1>让 AI 能力真正进入线下场景</h1>
         <p class="hero-copy">
-          面向企业与文旅商业空间，提供算力资源、模型接入与AI互动终端，
-          支持从能力到场景的完整落地。
+          覆盖文旅、商业与互动消费空间，提供 AI 终端、模型能力与场景运营支持。
         </p>
-        <div class="hero-actions">
-          <a class="button button-primary" href="/compute/market/">查看算力服务</a>
-          <a class="button button-secondary" href="/terminals/">查看智能终端</a>
-        </div>
       </div>
+
       <div class="home-hero-visual">
         <figure class="hero-scene hero-scene-main">
           <img src={heroScenes[0].src} alt={heroScenes[0].alt} />
@@ -106,6 +102,7 @@ const partners = [
         <p class="eyebrow">PRODUCTS & SCENARIOS</p>
         <h2>核心产品与场景</h2>
       </div>
+
       <div class="home-product-grid">
         {productCards.map((item) => (
           <article class="home-product-card">
@@ -129,6 +126,7 @@ const partners = [
         <p class="eyebrow">AI SERVICES</p>
         <h2>AI能力与服务</h2>
       </div>
+
       <div class="card-grid">
         {capabilities.map((item) => (
           <article class="info-card service-card">
@@ -146,6 +144,7 @@ const partners = [
         <p class="eyebrow">FOOTPRINT</p>
         <h2>真实落地规模与运营结果</h2>
       </div>
+
       <div class="home-stat-grid">
         {stats.map((item) => (
           <article class="home-stat-card">
@@ -163,6 +162,7 @@ const partners = [
         <p class="eyebrow">PARTNERS</p>
         <h2>合作伙伴</h2>
       </div>
+
       <div class="partner-wall">
         {partners.map((item) => (
           <div class="partner-card">
@@ -173,15 +173,4 @@ const partners = [
     </div>
   </section>
 
-  <section class="page-section">
-    <div class="shell">
-      <div class="home-cta home-cta-strong">
-        <div>
-          <p class="eyebrow">COOPERATION</p>
-          <h2>面向企业与文旅场景的AI项目合作</h2>
-        </div>
-        <a class="button button-primary" href="/about/#contact">立即咨询</a>
-      </div>
-    </div>
-  </section>
 </BaseLayout>
