@@ -6,17 +6,20 @@ const capabilityCards = [
   {
     icon: "▣",
     title: "AI 算力与模型服务",
-    description: "提供算力资源、模型接入与整机租赁支持，服务训练、推理、企业部署与项目交付。"
+    description:
+      "提供算力资源、模型接入与整机租赁支持，服务训练、推理、企业部署与项目交付。"
   },
   {
-    icon: "◫",
+    icon: "◈",
     title: "AI 互动终端产品",
-    description: "围绕 AI 旅拍机、AI 潮玩卡牌机、AI 机器猫等产品，面向文旅、商业空间和门店场景落地。"
+    description:
+      "围绕 AI 旅拍机、AI 潮玩卡牌机、AI 机器猫等产品，面向文旅、商业空间和门店场景落地。"
   },
   {
     icon: "◇",
     title: "场景方案与运营交付",
-    description: "从方案设计、内容定制、设备部署到现场运营支持，帮助客户把 AI 能力转化为真实体验。"
+    description:
+      "从方案设计、内容定制、设备部署到现场运营支持，帮助客户把 AI 能力转化为真实体验。"
   }
 ];
 
@@ -30,19 +33,14 @@ const systemItems = ["算法能力", "应用产品", "智能终端", "算力资�
         <div class="about-hero-visual">
           <img src="/assets/branding/001.png" alt="AI 与商业空间融合场景" />
           <div class="about-hero-overlay" aria-hidden="true"></div>
-          <div class="about-hero-glow about-hero-glow-a" aria-hidden="true"></div>
-          <div class="about-hero-glow about-hero-glow-b" aria-hidden="true"></div>
-          <div class="about-hero-stream about-hero-stream-a" aria-hidden="true"></div>
-          <div class="about-hero-stream about-hero-stream-b" aria-hidden="true"></div>
-          <div class="about-hero-particles" aria-hidden="true"></div>
+
         </div>
 
         <div class="about-hero-copy">
           <p class="eyebrow">关于我们</p>
-          <h1>让 AI 能力进入真实场景，并持续产生价值</h1>
+          <h2>让 AI 能力进入真实场景，并持续产生价值</h2>
           <p class="about-lead">
-            {company.name}专注于 AI 大模型与 AI 应用的产业化落地，
-            围绕“算力 + 模型 + 终端 + 场景”构建完整业务体系，
+            {company.name}专注于 AI 大模型与 AI 应用的产业化落地，围绕“算力 + 模型 + 终端 + 场景”构建完整业务体系，
             为企业、文旅项目与商业空间提供可交付的 AI 解决方案。
           </p>
           <div class="about-divider" aria-hidden="true">
@@ -93,15 +91,128 @@ const systemItems = ["算法能力", "应用产品", "智能终端", "算力资�
             </div>
           </div>
           <p>
-            官网展示的每一条业务，最终都要回到项目现场：是否能部署、是否能运行、是否能被用户理解、
+            官网展示的每一条业务，最终都要回到项目现场：是否能部署、是否能运行、是否能被用户理解，
             是否能帮助客户获得互动、传播或业务转化。
           </p>
-          <p>
-            这是天翔睿翼做 AI 算力服务与智能终端产品的共同判断标准。
-          </p>
+          <p>这是天翔睿翼做 AI 算力服务与智能终端产品的共同判断标准。</p>
           <div class="about-quote-mark" aria-hidden="true">”</div>
         </article>
       </section>
+
+      <section class="about-contact-panel" id="contact">
+        <div class="about-contact-copy">
+          <p class="eyebrow">CONTACT</p>
+          <h2>提交合作咨询</h2>
+          <p>留下基础信息，我们会根据咨询产品安排对应人员沟通。</p>
+        </div>
+
+        <form class="contact-form" id="contact-form">
+          <label>
+            <span>姓名</span>
+            <input name="name" type="text" autocomplete="name" required />
+          </label>
+          <label>
+            <span>公司</span>
+            <input name="company" type="text" autocomplete="organization" required />
+          </label>
+          <label>
+            <span>手机号</span>
+            <input
+              name="phone"
+              type="tel"
+              inputmode="numeric"
+              autocomplete="tel"
+              maxlength="11"
+              pattern="1[3-9][0-9]{9}"
+              required
+            />
+          </label>
+          <label>
+            <span>咨询产品</span>
+            <select name="product" required>
+              <option value="">请选择</option>
+              <option value="AI算力服务">AI算力服务</option>
+              <option value="模型接入">模型接入</option>
+              <option value="整机租赁">整机租赁</option>
+              <option value="AI旅拍机">AI旅拍机</option>
+              <option value="AI潮玩卡牌机">AI潮玩卡牌机</option>
+              <option value="AI机器猫">AI机器猫</option>
+              <option value="其他合作">其他合作</option>
+            </select>
+          </label>
+          <button class="button button-primary" type="submit">提交咨询</button>
+          <p class="contact-form-message" id="contact-form-message" role="status"></p>
+        </form>
+      </section>
     </div>
   </section>
+
+  <script>
+    const form = document.querySelector("#contact-form");
+    const message = document.querySelector("#contact-form-message");
+    const phoneInput = form?.querySelector("input[name='phone']");
+    const phonePattern = /^1[3-9]\d{9}$/;
+    const phoneError = "请输入正确的手机号";
+
+    function setMessage(text, type) {
+      if (!message) return;
+      message.textContent = text;
+      message.classList.remove("is-error", "is-success");
+      if (type) message.classList.add(type);
+    }
+
+    phoneInput?.addEventListener("input", () => {
+      phoneInput.value = phoneInput.value.replace(/\D/g, "").slice(0, 11);
+      if (phoneInput.value.length === 11 && !phonePattern.test(phoneInput.value)) {
+        setMessage(phoneError, "is-error");
+      } else {
+        setMessage("", "");
+      }
+    });
+
+    form?.addEventListener("submit", async (event) => {
+      event.preventDefault();
+
+      const submitButton = form.querySelector("button[type='submit']");
+      const formData = new FormData(form);
+      const payload = Object.fromEntries(formData.entries());
+      const phone = String(payload.phone || "").replace(/\s+/g, "");
+
+      if (!phonePattern.test(phone)) {
+        setMessage(phoneError, "is-error");
+        phoneInput?.focus();
+        return;
+      }
+
+      if (submitButton) {
+        submitButton.disabled = true;
+        submitButton.textContent = "提交中...";
+      }
+
+      setMessage("", "");
+
+      try {
+        const response = await fetch("/api/contact", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ ...payload, phone })
+        });
+        const result = await response.json();
+
+        if (!response.ok) {
+          throw new Error(result.message || "提交失败，请稍后重试");
+        }
+
+        form.reset();
+        setMessage("已提交，我们会尽快联系您。", "is-success");
+      } catch (error) {
+        setMessage(error instanceof Error ? error.message : "提交失败，请稍后重试", "is-error");
+      } finally {
+        if (submitButton) {
+          submitButton.disabled = false;
+          submitButton.textContent = "提交咨询";
+        }
+      }
+    });
+  </script>
 </BaseLayout>

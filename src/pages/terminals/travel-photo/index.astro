@@ -93,8 +93,8 @@ import {
         </div>
       </div>
       <div class="travel-poster-stack">
-        <img src="/assets/travel-photo/standard-024.png" alt="大明湖旅拍样张" />
-        <img src="/assets/travel-photo/standard-012.png" alt="数字文旅氛围视觉" />
+        <img src="/assets/travel-photo/nv.jpg" alt="天坛女" />
+        <img src="/assets/travel-photo/nan.jpg" alt="天坛男" />
       </div>
     </div>
   </section>
@@ -145,11 +145,28 @@ import {
 
   <section class="page-section">
     <div class="shell">
-      <SectionTitle
-        eyebrow="BENCHMARK CASES"
-        title="标杆案例，验证不同文旅场景的落地能力"
-        description="覆盖景区、文博与历史街区等多类型场景，通过真实项目验证“内容 + 互动 + 转化”的一体化能力。"
-      />
+      <div class="section-title benchmark-title">
+        <p class="eyebrow">BENCHMARK CASES</p>
+        <h2>标杆案例，验证不同文旅场景的落地能力</h2>
+        <p>覆盖景区、文博与历史街区等多类型场景，通过真实项目验证“内容 + 互动 + 转化”的一体化能力。</p>
+      </div>
+      <div class="location-search-card" data-location-search>
+        <div>
+          <h3>查询设备覆盖与投放机会</h3>
+          <p>输入城市或景区名称，了解是否已有公开覆盖点位，或提交新的投放合作意向。</p>
+        </div>
+        <form class="location-search-form" data-location-search-form>
+          <input
+            type="search"
+            name="keyword"
+            placeholder="请输入城市或景区名称"
+            autocomplete="off"
+            data-location-search-input
+          />
+          <button class="button button-primary" type="submit">查询</button>
+        </form>
+        <div class="location-search-result" data-location-search-result hidden></div>
+      </div>
       <div class="card-grid">
         {travelPhotoCases.map((item) => (
           <article class="info-card">
@@ -177,3 +194,144 @@ import {
     </div>
   </section>
 </BaseLayout>
+
+<script>
+  const searchRoot = document.querySelector("[data-location-search]");
+
+  if (searchRoot) {
+    const form = searchRoot.querySelector("[data-location-search-form]");
+    const input = searchRoot.querySelector("[data-location-search-input]");
+    const result = searchRoot.querySelector("[data-location-search-result]");
+    let locations = [];
+
+    const normalize = (value) => String(value ?? "").trim().toLowerCase();
+
+    const parseCsvLine = (line) => {
+      const cells = [];
+      let current = "";
+      let inQuotes = false;
+
+      for (const char of line) {
+        if (char === '"') {
+          inQuotes = !inQuotes;
+          continue;
+        }
+
+        if (char === "," && !inQuotes) {
+          cells.push(current);
+          current = "";
+          continue;
+        }
+
+        current += char;
+      }
+
+      cells.push(current);
+      return cells.map((cell) => cell.trim());
+    };
+
+    const parseCsv = (text) => {
+      const lines = text
+        .trim()
+        .split(/\r?\n/)
+        .filter(Boolean);
+      const headers = parseCsvLine(lines.shift() ?? "");
+
+      return lines.map((line) => {
+        const cells = parseCsvLine(line);
+        return headers.reduce((item, header, index) => {
+          item[header] = cells[index] ?? "";
+          return item;
+        }, {});
+      });
+    };
+
+    const renderCards = (items) => items
+      .map((item) => `
+        <article class="location-result-card">
+          <p>${item["状态"]}</p>
+          <h4>${item["点位名称"]}</h4>
+          <div>
+            <span>${item["城市"]}</span>
+            <span>${item["场景类型"]}</span>
+            <span>${item["设备类型"]}</span>
+          </div>
+          <small>${item["说明"]}</small>
+        </article>
+      `)
+      .join("");
+
+    const renderResult = (type, items = []) => {
+      if (!result) return;
+
+      const content = {
+        covered: {
+          title: "已查询到公开覆盖点位",
+          desc: "该区域已有公开案例或设备覆盖，可继续咨询投放合作。"
+        },
+        related: {
+          title: "找到相关覆盖点位",
+          desc: "没有完全匹配的点位，但查询到相关城市或相近景区案例。"
+        },
+        empty: {
+          title: "暂无公开覆盖点位",
+          desc: "当前未查询到公开案例，可提交投放意向，我们会评估是否适合落地。"
+        }
+      }[type];
+
+      result.hidden = false;
+      result.innerHTML = `
+        <div class="location-result-head">
+          <div>
+            <strong>${content.title}</strong>
+            <p>${content.desc}</p>
+          </div>
+          ${type === "empty" ? '<a class="button button-secondary" href="/about/#contact">提交投放咨询</a>' : ""}
+        </div>
+        ${items.length ? `<div class="location-result-grid">${renderCards(items)}</div>` : ""}
+      `;
+    };
+
+    fetch("/data/travel-photo-locations.csv")
+      .then((response) => response.ok ? response.text() : "")
+      .then((text) => {
+        locations = text ? parseCsv(text) : [];
+      })
+      .catch(() => {
+        locations = [];
+      });
+
+    form?.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const keyword = normalize(input?.value);
+
+      if (!keyword) {
+        renderResult("empty");
+        return;
+      }
+
+      const exactMatches = locations.filter((item) => {
+        const city = normalize(item["城市"]);
+        const name = normalize(item["点位名称"]);
+        return city === keyword || name === keyword;
+      });
+
+      if (exactMatches.length) {
+        renderResult("covered", exactMatches);
+        return;
+      }
+
+      const relatedMatches = locations.filter((item) => {
+        const searchable = normalize(`${item["城市"]} ${item["点位名称"]} ${item["关键词"]}`);
+        return searchable.includes(keyword) || keyword.includes(normalize(item["城市"]));
+      });
+
+      if (relatedMatches.length) {
+        renderResult("related", relatedMatches.slice(0, 6));
+        return;
+      }
+
+      renderResult("empty");
+    });
+  }
+</script>

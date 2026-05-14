@@ -1,16 +1,10 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 
-const heroScenes = [
-  {
-    src: "/assets/travel-photo/top1.png",
-    alt: "景区 AI 旅拍机游客体验现场"
-  },
-  {
-    src: "/assets/card-machine/mall-013.png",
-    alt: "商场 AI 潮玩卡牌机互动现场"
-  }
-];
+const heroScene = {
+  src: "/assets/topshouye.png",
+  alt: "AI 终端在文旅与商业场景中的落地展示"
+};
 
 const productCards = [
   {
@@ -79,7 +73,7 @@ const partners = [
     <div class="shell home-hero-grid">
       <div class="home-hero-copy">
         <p class="eyebrow">XCASTLE AI</p>
-        <h1>让 AI 能力真正进入线下场景</h1>
+        <h2>让 AI 能力真正进入线下场景，并持续产生价值</h2>
         <p class="hero-copy">
           覆盖文旅、商业与互动消费空间，提供 AI 终端、模型能力与场景运营支持。
         </p>
@@ -87,10 +81,7 @@ const partners = [
 
       <div class="home-hero-visual">
         <figure class="hero-scene hero-scene-main">
-          <img src={heroScenes[0].src} alt={heroScenes[0].alt} />
-        </figure>
-        <figure class="hero-scene hero-scene-side">
-          <img src={heroScenes[1].src} alt={heroScenes[1].alt} />
+          <img src={heroScene.src} alt={heroScene.alt} />
         </figure>
       </div>
     </div>
@@ -172,5 +163,4 @@ const partners = [
       </div>
     </div>
   </section>
-
 </BaseLayout>
