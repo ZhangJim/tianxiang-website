@@ -14,7 +14,10 @@ export function getStaticPaths() {
 const { machine } = Astro.props;
 ---
 
-<BaseLayout title={machine.name}>
+<BaseLayout
+  title={`${machine.name}｜GPU整机租赁`}
+  description={`${machine.name}提供${machine.gpu}、${machine.count}配置，适用于${machine.usage}，支持企业合作、部署建议与远程运维。`}
+>
   <section class="page-section">
     <div class="shell">
       <ComputeTabs />

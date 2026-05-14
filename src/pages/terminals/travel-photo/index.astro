@@ -267,11 +267,11 @@ import {
       const content = {
         covered: {
           title: "已查询到公开覆盖点位",
-          desc: "该区域已有公开案例或设备覆盖，可继续咨询投放合作。"
+          desc: "该点位已有公开案例或设备覆盖，可继续咨询投放合作。"
         },
-        related: {
-          title: "找到相关覆盖点位",
-          desc: "没有完全匹配的点位，但查询到相关城市或相近景区案例。"
+        area: {
+          title: "已查询到该区域公开覆盖点位",
+          desc: "该区域已有公开案例或设备覆盖，可继续咨询投放合作。"
         },
         empty: {
           title: "暂无公开覆盖点位",
@@ -310,24 +310,24 @@ import {
         return;
       }
 
-      const exactMatches = locations.filter((item) => {
-        const city = normalize(item["城市"]);
+      const spotMatches = locations.filter((item) => {
         const name = normalize(item["点位名称"]);
-        return city === keyword || name === keyword;
+        const keywords = normalize(item["关键词"]);
+        return name.includes(keyword) || keywords.includes(keyword);
       });
 
-      if (exactMatches.length) {
-        renderResult("covered", exactMatches);
+      if (spotMatches.length) {
+        renderResult("covered", spotMatches);
         return;
       }
 
-      const relatedMatches = locations.filter((item) => {
-        const searchable = normalize(`${item["城市"]} ${item["点位名称"]} ${item["关键词"]}`);
-        return searchable.includes(keyword) || keyword.includes(normalize(item["城市"]));
+      const areaMatches = locations.filter((item) => {
+        const city = normalize(item["城市"]);
+        return city.includes(keyword) || keyword.includes(city);
       });
 
-      if (relatedMatches.length) {
-        renderResult("related", relatedMatches.slice(0, 6));
+      if (areaMatches.length) {
+        renderResult("area", areaMatches.slice(0, 6));
         return;
       }
 
