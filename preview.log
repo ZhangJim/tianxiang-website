@@ -1,0 +1,8 @@
+
+> tianxiang-website@0.0.1 preview
+> node ./dist/server/entry.mjs
+
+16:36:03 [@astrojs/node] Server listening on 
+  local: http://localhost:4321 	
+  network: http://192.168.123.63:4321
+

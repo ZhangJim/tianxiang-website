@@ -1,0 +1,592 @@
+---
+import { isAdminRequest } from "../../lib/adminAuth";
+
+export const prerender = false;
+
+if (!isAdminRequest(Astro.request)) {
+  return Astro.redirect("/admin/login/");
+}
+---
+
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex,nofollow" />
+    <title>天翔睿翼后台</title>
+    <style>
+      :root {
+        color: #171717;
+        background: #f4efe7;
+        font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .admin-shell {
+        width: min(100% - 48px, 1380px);
+        margin: 0 auto;
+      }
+
+      .admin-header {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+        background: rgba(244, 239, 231, 0.94);
+        backdrop-filter: blur(16px);
+      }
+
+      .admin-header-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-height: 86px;
+        gap: 20px;
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        margin: 0;
+      }
+
+      .admin-title h1 {
+        font-size: 30px;
+      }
+
+      .admin-title p {
+        margin-top: 6px;
+        color: #68645f;
+      }
+
+      .button,
+      button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 42px;
+        padding: 0 16px;
+        border: 0;
+        border-radius: 999px;
+        background: #d67433;
+        color: #fff;
+        font: inherit;
+        font-weight: 800;
+        cursor: pointer;
+      }
+
+      .button.secondary,
+      button.secondary {
+        border: 1px solid #ded7ce;
+        background: rgba(255, 255, 255, 0.72);
+        color: #171717;
+      }
+
+      .button.danger,
+      button.danger {
+        background: #b63b2f;
+      }
+
+      .admin-main {
+        display: grid;
+        gap: 22px;
+        padding: 28px 0 54px;
+      }
+
+      .admin-card {
+        padding: 26px;
+        border: 1px solid rgba(255, 255, 255, 0.76);
+        border-radius: 30px;
+        background: rgba(255, 255, 255, 0.78);
+        box-shadow: 0 24px 80px rgba(31, 24, 15, 0.09);
+      }
+
+      .card-head,
+      .toolbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        margin-bottom: 18px;
+      }
+
+      .card-head p {
+        margin-top: 6px;
+        color: #68645f;
+      }
+
+      .toolbar {
+        flex-wrap: wrap;
+      }
+
+      .search-input,
+      input,
+      select,
+      textarea {
+        width: 100%;
+        min-height: 42px;
+        padding: 0 14px;
+        border: 1px solid #ded7ce;
+        border-radius: 14px;
+        background: rgba(255, 255, 255, 0.88);
+        color: #171717;
+        font: inherit;
+      }
+
+      textarea {
+        min-height: 92px;
+        padding: 12px 14px;
+        resize: vertical;
+      }
+
+      .search-input {
+        max-width: 360px;
+      }
+
+      .table-wrap {
+        width: 100%;
+        overflow-x: auto;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      th,
+      td {
+        padding: 13px 12px;
+        border-bottom: 1px solid #e8dfd5;
+        text-align: left;
+        vertical-align: top;
+        white-space: nowrap;
+      }
+
+      th {
+        color: #7a7168;
+        font-size: 14px;
+      }
+
+      td.wrap {
+        min-width: 260px;
+        white-space: normal;
+      }
+
+      .form-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px;
+        margin-bottom: 18px;
+      }
+
+      .form-grid label {
+        display: grid;
+        gap: 8px;
+        font-weight: 800;
+      }
+
+      .form-grid label.full {
+        grid-column: 1 / -1;
+      }
+
+      .form-actions,
+      .import-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .status {
+        min-height: 24px;
+        color: #1f5f49;
+        font-weight: 800;
+      }
+
+      .muted {
+        color: #68645f;
+      }
+
+      @media (max-width: 900px) {
+        .admin-shell {
+          width: min(100% - 24px, 1380px);
+        }
+
+        .admin-header-inner,
+        .card-head {
+          align-items: flex-start;
+          flex-direction: column;
+        }
+
+        .form-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="admin-header">
+      <div class="admin-shell admin-header-inner">
+        <div class="admin-title">
+          <h1>天翔睿翼后台</h1>
+          <p>合作咨询只读；AI 旅拍机点位支持表格化维护。</p>
+        </div>
+        <div class="form-actions">
+          <a class="button secondary" href="/" target="_blank" rel="noreferrer">打开官网</a>
+          <button class="secondary" id="logout-button" type="button">退出登录</button>
+        </div>
+      </div>
+    </header>
+
+    <main class="admin-shell admin-main">
+      <section class="admin-card">
+        <div class="card-head">
+          <div>
+            <h2>合作咨询</h2>
+            <p>用户提交数据仅支持查看和导出，不在后台修改。</p>
+          </div>
+          <a class="button" href="/api/admin/leads?download=1">导出 CSV</a>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>提交时间</th>
+                <th>姓名</th>
+                <th>公司</th>
+                <th>手机号</th>
+                <th>咨询产品</th>
+                <th>来源 IP</th>
+              </tr>
+            </thead>
+            <tbody id="leads-body">
+              <tr><td colspan="6" class="muted">正在加载...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="admin-card">
+        <div class="card-head">
+          <div>
+            <h2>AI 旅拍机点位</h2>
+            <p>维护城市、点位、场景、状态和搜索关键词；保存时会自动备份原 CSV。</p>
+          </div>
+          <a class="button" href="/api/admin/locations?download=1">导出点位 CSV</a>
+        </div>
+
+        <form id="location-form" class="form-grid">
+          <input name="id" type="hidden" />
+          <label>
+            城市/省份
+            <input name="city" required />
+          </label>
+          <label>
+            点位名称
+            <input name="spotName" required />
+          </label>
+          <label>
+            场景类型
+            <input name="sceneType" placeholder="文旅景区 / 商业空间" required />
+          </label>
+          <label>
+            设备类型
+            <input name="deviceType" placeholder="AI旅拍机" required />
+          </label>
+          <label>
+            状态
+            <select name="status" required>
+              <option value="已覆盖">已覆盖</option>
+              <option value="可咨询">可咨询</option>
+              <option value="洽谈中">洽谈中</option>
+            </select>
+          </label>
+          <label>
+            关键词
+            <input name="keywords" placeholder="多个关键词用空格分隔" />
+          </label>
+          <label class="full">
+            说明
+            <textarea name="description"></textarea>
+          </label>
+          <div class="form-actions">
+            <button type="submit">保存点位</button>
+            <button class="secondary" type="button" id="reset-location-form">新增模式</button>
+          </div>
+          <div class="status" id="location-message"></div>
+        </form>
+
+        <div class="toolbar">
+          <input class="search-input" id="location-search" placeholder="搜索城市、点位或关键词" />
+          <div class="import-actions">
+            <input id="location-import-file" type="file" accept=".csv,text/csv" />
+            <button class="secondary" type="button" id="append-import">追加导入</button>
+            <button class="danger" type="button" id="replace-import">覆盖导入</button>
+          </div>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>城市/省份</th>
+                <th>点位名称</th>
+                <th>场景类型</th>
+                <th>设备类型</th>
+                <th>状态</th>
+                <th>说明</th>
+                <th>关键词</th>
+                <th>操作</th>
+              </tr>
+            </thead>
+            <tbody id="locations-body">
+              <tr><td colspan="8" class="muted">正在加载...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <script is:inline>
+      const leadsBody = document.querySelector("#leads-body");
+      const locationsBody = document.querySelector("#locations-body");
+      const locationForm = document.querySelector("#location-form");
+      const locationMessage = document.querySelector("#location-message");
+      const locationSearch = document.querySelector("#location-search");
+      const importFile = document.querySelector("#location-import-file");
+      let locations = [];
+
+      const escapeHtml = (value) => String(value ?? "")
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+
+      function setLocationMessage(message, isError = false) {
+        locationMessage.textContent = message;
+        locationMessage.style.color = isError ? "#b63b2f" : "#1f5f49";
+      }
+
+      async function readCsvImportFile(file) {
+        const buffer = await file.arrayBuffer();
+        const utf8Text = new TextDecoder("utf-8").decode(buffer);
+
+        if (utf8Text.includes("城市") || utf8Text.includes("点位")) {
+          return utf8Text;
+        }
+
+        try {
+          return new TextDecoder("gb18030").decode(buffer);
+        } catch {
+          return utf8Text;
+        }
+      }
+
+      async function api(path, options = {}) {
+        const response = await fetch(path, {
+          ...options,
+          headers: {
+            "Content-Type": "application/json",
+            ...(options.headers || {})
+          }
+        });
+
+        if (response.status === 401) {
+          location.href = "/admin/login/";
+          return;
+        }
+
+        const data = await response.json().catch(() => ({}));
+
+        if (!response.ok) {
+          throw new Error(data.message || "操作失败");
+        }
+
+        return data;
+      }
+
+      function renderLeads(items) {
+        if (!items.length) {
+          leadsBody.innerHTML = '<tr><td colspan="6" class="muted">暂无合作咨询</td></tr>';
+          return;
+        }
+
+        leadsBody.innerHTML = items.map((item) => `
+          <tr>
+            <td>${escapeHtml(item.submittedAt)}</td>
+            <td>${escapeHtml(item.name)}</td>
+            <td>${escapeHtml(item.company)}</td>
+            <td>${escapeHtml(item.phone)}</td>
+            <td>${escapeHtml(item.product)}</td>
+            <td>${escapeHtml(item.ip)}</td>
+          </tr>
+        `).join("");
+      }
+
+      function renderLocations() {
+        const keyword = String(locationSearch.value || "").trim().toLowerCase();
+        const filtered = locations.filter((item) => {
+          const text = `${item.city} ${item.spotName} ${item.sceneType} ${item.deviceType} ${item.status} ${item.description} ${item.keywords}`.toLowerCase();
+          return !keyword || text.includes(keyword);
+        });
+
+        if (!filtered.length) {
+          locationsBody.innerHTML = '<tr><td colspan="8" class="muted">暂无点位数据</td></tr>';
+          return;
+        }
+
+        locationsBody.innerHTML = filtered.map((item) => `
+          <tr>
+            <td>${escapeHtml(item.city)}</td>
+            <td>${escapeHtml(item.spotName)}</td>
+            <td>${escapeHtml(item.sceneType)}</td>
+            <td>${escapeHtml(item.deviceType)}</td>
+            <td>${escapeHtml(item.status)}</td>
+            <td class="wrap">${escapeHtml(item.description)}</td>
+            <td class="wrap">${escapeHtml(item.keywords)}</td>
+            <td>
+              <button class="secondary" type="button" data-edit="${item.id}">修改</button>
+              <button class="danger" type="button" data-delete="${item.id}">删除</button>
+            </td>
+          </tr>
+        `).join("");
+      }
+
+      function resetLocationForm() {
+        locationForm.reset();
+        locationForm.elements.id.value = "";
+        setLocationMessage("当前为新增模式");
+      }
+
+      async function loadLeads() {
+        const data = await api("/api/admin/leads");
+        renderLeads(data.items || []);
+      }
+
+      async function loadLocations() {
+        const data = await api("/api/admin/locations");
+        locations = data.items || [];
+        renderLocations();
+      }
+
+      locationForm?.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        setLocationMessage("");
+
+        const formData = new FormData(locationForm);
+        const id = formData.get("id");
+        const payload = {
+          id,
+          city: formData.get("city"),
+          spotName: formData.get("spotName"),
+          sceneType: formData.get("sceneType"),
+          deviceType: formData.get("deviceType"),
+          status: formData.get("status"),
+          description: formData.get("description"),
+          keywords: formData.get("keywords")
+        };
+        const method = id === "" ? "POST" : "PUT";
+        const data = await api("/api/admin/locations", {
+          method,
+          body: JSON.stringify(payload)
+        });
+
+        locations = data.items || [];
+        setLocationMessage(data.message || "已保存");
+        resetLocationForm();
+        renderLocations();
+      });
+
+      locationsBody?.addEventListener("click", async (event) => {
+        const editButton = event.target.closest("[data-edit]");
+        const deleteButton = event.target.closest("[data-delete]");
+
+        if (editButton) {
+          const item = locations.find((entry) => String(entry.id) === editButton.dataset.edit);
+
+          if (!item) return;
+
+          locationForm.elements.id.value = item.id;
+          locationForm.elements.city.value = item.city;
+          locationForm.elements.spotName.value = item.spotName;
+          locationForm.elements.sceneType.value = item.sceneType;
+          locationForm.elements.deviceType.value = item.deviceType;
+          locationForm.elements.status.value = item.status;
+          locationForm.elements.description.value = item.description;
+          locationForm.elements.keywords.value = item.keywords;
+          setLocationMessage(`正在修改：${item.spotName}`);
+          locationForm.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+
+        if (deleteButton) {
+          const item = locations.find((entry) => String(entry.id) === deleteButton.dataset.delete);
+
+          if (!item || !confirm(`确定删除「${item.spotName}」吗？`)) return;
+
+          const data = await api("/api/admin/locations", {
+            method: "DELETE",
+            body: JSON.stringify({ id: item.id })
+          });
+          locations = data.items || [];
+          setLocationMessage(data.message || "已删除");
+          renderLocations();
+        }
+      });
+
+      async function importLocations(mode) {
+        const file = importFile.files?.[0];
+
+        if (!file) {
+          setLocationMessage("请先选择 CSV 文件", true);
+          return;
+        }
+
+        if (mode === "replace" && !confirm("覆盖导入会替换当前全部点位，确定继续吗？")) {
+          return;
+        }
+
+        try {
+          setLocationMessage("正在导入 CSV...");
+          const csvText = await readCsvImportFile(file);
+          const data = await api("/api/admin/locations", {
+            method: "PATCH",
+            body: JSON.stringify({ mode, csvText })
+          });
+          locations = data.items || [];
+          setLocationMessage(data.message || "导入完成");
+          importFile.value = "";
+          renderLocations();
+        } catch (error) {
+          setLocationMessage(error.message || "导入失败，请检查 CSV 表头和内容", true);
+        }
+      }
+
+      document.querySelector("#reset-location-form")?.addEventListener("click", resetLocationForm);
+      document.querySelector("#append-import")?.addEventListener("click", () => importLocations("append"));
+      document.querySelector("#replace-import")?.addEventListener("click", () => importLocations("replace"));
+      locationSearch?.addEventListener("input", renderLocations);
+      document.querySelector("#logout-button")?.addEventListener("click", async () => {
+        await fetch("/api/admin/logout", { method: "POST" });
+        location.href = "/admin/login/";
+      });
+
+      Promise.all([loadLeads(), loadLocations()]).catch((error) => {
+        setLocationMessage(error.message || "加载失败", true);
+      });
+    </script>
+  </body>
+</html>

@@ -12,6 +12,7 @@ export function GET({ url }: { url: URL }) {
     [
       "User-agent: *",
       "Disallow: /api/",
+      "Disallow: /admin/",
       allowRules,
       `Sitemap: ${new URL("/sitemap.xml", siteOrigin).toString()}`
     ].join("\n"),

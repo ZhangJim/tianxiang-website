@@ -1,0 +1,138 @@
+---
+import { isAdminRequest } from "../../lib/adminAuth";
+
+export const prerender = false;
+
+if (isAdminRequest(Astro.request)) {
+  return Astro.redirect("/admin/");
+}
+---
+
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex,nofollow" />
+    <title>后台登录</title>
+    <style>
+      :root {
+        color: #171717;
+        background: #f4efe7;
+        font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        display: grid;
+        min-height: 100vh;
+        margin: 0;
+        place-items: center;
+      }
+
+      .login-card {
+        width: min(92vw, 430px);
+        padding: 34px;
+        border: 1px solid rgba(255, 255, 255, 0.72);
+        border-radius: 30px;
+        background: rgba(255, 255, 255, 0.82);
+        box-shadow: 0 28px 90px rgba(29, 22, 14, 0.14);
+      }
+
+      h1 {
+        margin: 0 0 8px;
+        font-size: 34px;
+      }
+
+      p {
+        margin: 0 0 24px;
+        color: #68645f;
+        line-height: 1.8;
+      }
+
+      label {
+        display: grid;
+        gap: 8px;
+        margin-bottom: 16px;
+        font-weight: 700;
+      }
+
+      input {
+        width: 100%;
+        min-height: 48px;
+        padding: 0 16px;
+        border: 1px solid #ded7ce;
+        border-radius: 16px;
+        font: inherit;
+      }
+
+      button {
+        width: 100%;
+        min-height: 50px;
+        border: 0;
+        border-radius: 999px;
+        color: #fff;
+        background: #d67433;
+        font: inherit;
+        font-weight: 800;
+        cursor: pointer;
+      }
+
+      .message {
+        min-height: 24px;
+        margin-top: 14px;
+        color: #c6462e;
+        font-weight: 700;
+      }
+    </style>
+  </head>
+  <body>
+    <form class="login-card" id="login-form">
+      <h1>后台登录</h1>
+      <p>用于查看合作咨询和维护 AI 旅拍机点位数据。</p>
+      <label>
+        账号
+        <input name="username" autocomplete="username" required />
+      </label>
+      <label>
+        密码
+        <input name="password" type="password" autocomplete="current-password" required />
+      </label>
+      <button type="submit">登录</button>
+      <div class="message" id="login-message"></div>
+    </form>
+
+    <script>
+      const form = document.querySelector("#login-form");
+      const message = document.querySelector("#login-message");
+
+      form?.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        message.textContent = "";
+
+        const formData = new FormData(form);
+        const payload = {
+          username: formData.get("username"),
+          password: formData.get("password")
+        };
+
+        const response = await fetch("/api/admin/login", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload)
+        });
+        const data = await response.json().catch(() => ({}));
+
+        if (!response.ok) {
+          message.textContent = data.message || "登录失败";
+          return;
+        }
+
+        location.href = "/admin/";
+      });
+    </script>
+  </body>
+</html>
