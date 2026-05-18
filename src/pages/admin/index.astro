@@ -14,8 +14,11 @@ if (!isAdminRequest(Astro.request)) {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="robots" content="noindex,nofollow" />
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
     <title>天翔睿翼后台</title>
-    <style>
+    <style is:global>
       :root {
         color: #171717;
         background: #f4efe7;
@@ -33,6 +36,13 @@ if (!isAdminRequest(Astro.request)) {
       a {
         color: inherit;
         text-decoration: none;
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        margin: 0;
       }
 
       .admin-shell {
@@ -53,24 +63,58 @@ if (!isAdminRequest(Astro.request)) {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        min-height: 86px;
         gap: 20px;
+        padding-top: 18px;
       }
 
-      h1,
-      h2,
-      h3,
-      p {
-        margin: 0;
+      .admin-brand h1 {
+        font-size: 26px;
       }
 
-      .admin-title h1 {
-        font-size: 30px;
-      }
-
-      .admin-title p {
-        margin-top: 6px;
+      .admin-brand p {
+        margin-top: 4px;
         color: #68645f;
+        font-size: 14px;
+      }
+
+      .admin-header-actions {
+        display: flex;
+        gap: 10px;
+      }
+
+      .admin-tabs {
+        display: flex;
+        gap: 10px;
+        padding: 16px 0 14px;
+        flex-wrap: wrap;
+      }
+
+      .admin-tab {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        min-height: 42px;
+        padding: 0 20px;
+        border: 1px solid #ded7ce;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.72);
+        color: #171717;
+        font: inherit;
+        font-weight: 700;
+        cursor: pointer;
+        transition: all 0.18s ease;
+      }
+
+      .admin-tab:hover {
+        border-color: #d67433;
+        color: #d67433;
+      }
+
+      .admin-tab.active {
+        border-color: transparent;
+        background: #d67433;
+        color: #fff;
+        box-shadow: 0 8px 26px rgba(214, 116, 51, 0.32);
       }
 
       .button,
@@ -101,6 +145,15 @@ if (!isAdminRequest(Astro.request)) {
         background: #b63b2f;
       }
 
+      button[disabled] {
+        opacity: 0.45;
+        cursor: not-allowed;
+      }
+
+      [hidden] {
+        display: none !important;
+      }
+
       .admin-main {
         display: grid;
         gap: 22px;
@@ -115,22 +168,33 @@ if (!isAdminRequest(Astro.request)) {
         box-shadow: 0 24px 80px rgba(31, 24, 15, 0.09);
       }
 
-      .card-head,
-      .toolbar {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 16px;
-        margin-bottom: 18px;
+      .tab-panel[hidden] {
+        display: none;
       }
 
-      .card-head p {
+      .panel-head {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 16px;
+        margin-bottom: 20px;
+        flex-wrap: wrap;
+      }
+
+      .panel-title h2 {
+        font-size: 22px;
+      }
+
+      .panel-title p {
         margin-top: 6px;
         color: #68645f;
       }
 
-      .toolbar {
+      .panel-actions {
+        display: flex;
+        gap: 10px;
         flex-wrap: wrap;
+        align-items: center;
       }
 
       .search-input,
@@ -154,12 +218,25 @@ if (!isAdminRequest(Astro.request)) {
       }
 
       .search-input {
-        max-width: 360px;
+        max-width: 320px;
+      }
+
+      .toolbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 14px;
+        margin-bottom: 14px;
       }
 
       .table-wrap {
         width: 100%;
-        overflow-x: auto;
+        max-height: 620px;
+        overflow: auto;
+        border: 1px solid #e6dccd;
+        border-radius: 18px;
+        background: #fffaf2;
       }
 
       table {
@@ -167,23 +244,123 @@ if (!isAdminRequest(Astro.request)) {
         border-collapse: collapse;
       }
 
-      th,
-      td {
-        padding: 13px 12px;
-        border-bottom: 1px solid #e8dfd5;
+      thead th {
+        position: sticky;
+        top: 0;
+        z-index: 1;
+        padding: 14px 14px;
+        border-bottom: 1px solid #d8c9ae;
+        background: #ece2cb;
+        color: #6c5d49;
+        font-size: 13px;
+        font-weight: 800;
+        letter-spacing: 0.04em;
         text-align: left;
-        vertical-align: top;
         white-space: nowrap;
       }
 
-      th {
-        color: #7a7168;
-        font-size: 14px;
+      tbody td {
+        padding: 14px 14px;
+        border-bottom: 1px solid #e2d6bd;
+        border-right: 1px solid #ece1c9;
+        vertical-align: middle;
+        white-space: nowrap;
+        font-size: 14.5px;
+      }
+
+      tbody td:last-child {
+        border-right: 0;
+      }
+
+      thead th {
+        border-right: 1px solid #ece1c9;
+      }
+
+      thead th:last-child {
+        border-right: 0;
+      }
+
+      tbody tr:nth-child(odd) td {
+        background: #fffaf2;
+      }
+
+      tbody tr:nth-child(even) td {
+        background: #f5ecd9;
+      }
+
+      tbody tr:hover td {
+        background: #fbe6cf;
+      }
+
+      tbody tr:last-child td {
+        border-bottom: 0;
       }
 
       td.wrap {
-        min-width: 260px;
+        min-width: 240px;
         white-space: normal;
+        line-height: 1.6;
+      }
+
+      td.actions {
+        white-space: nowrap;
+        min-width: 170px;
+        text-align: left;
+      }
+
+      td.actions > button,
+      td.actions .row-actions > button {
+        display: inline-flex !important;
+        vertical-align: middle;
+        min-height: 32px;
+        margin-right: 8px;
+        padding: 0 14px;
+        font-size: 13px;
+        white-space: nowrap;
+      }
+
+      td.actions > button:last-child,
+      td.actions .row-actions > button:last-child {
+        margin-right: 0;
+      }
+
+      .row-actions {
+        display: flex !important;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        gap: 8px;
+        align-items: center;
+        white-space: nowrap;
+      }
+
+      .status-pill {
+        display: inline-flex;
+        align-items: center;
+        padding: 4px 10px;
+        border-radius: 999px;
+        font-size: 12px;
+        font-weight: 800;
+        white-space: nowrap;
+      }
+
+      .status-pill.covered {
+        background: rgba(31, 95, 73, 0.14);
+        color: #1f5f49;
+      }
+
+      .status-pill.consult {
+        background: rgba(214, 116, 51, 0.18);
+        color: #b6531f;
+      }
+
+      .status-pill.talking {
+        background: rgba(120, 113, 108, 0.2);
+        color: #58524d;
+      }
+
+      .status-pill.default {
+        background: rgba(0, 0, 0, 0.06);
+        color: #58524d;
       }
 
       .form-grid {
@@ -212,6 +389,7 @@ if (!isAdminRequest(Astro.request)) {
 
       .status {
         min-height: 24px;
+        margin-top: 8px;
         color: #1f5f49;
         font-weight: 800;
       }
@@ -220,13 +398,47 @@ if (!isAdminRequest(Astro.request)) {
         color: #68645f;
       }
 
+      .pagination {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 10px;
+        margin-top: 16px;
+        flex-wrap: wrap;
+      }
+
+      .pagination button {
+        min-height: 36px;
+        padding: 0 14px;
+        border: 1px solid #ded7ce;
+        background: rgba(255, 255, 255, 0.78);
+        color: #171717;
+        font-size: 14px;
+        font-weight: 700;
+      }
+
+      .pagination button:hover:not([disabled]) {
+        border-color: #d67433;
+        color: #d67433;
+      }
+
+      .page-info {
+        color: #68645f;
+        font-size: 14px;
+      }
+
+      .page-info strong {
+        color: #d67433;
+        font-weight: 800;
+      }
+
       @media (max-width: 900px) {
         .admin-shell {
           width: min(100% - 24px, 1380px);
         }
 
         .admin-header-inner,
-        .card-head {
+        .panel-head {
           align-items: flex-start;
           flex-direction: column;
         }
@@ -234,31 +446,46 @@ if (!isAdminRequest(Astro.request)) {
         .form-grid {
           grid-template-columns: 1fr;
         }
+
+        .panel-actions {
+          width: 100%;
+        }
+
+        .search-input {
+          max-width: 100%;
+        }
       }
     </style>
   </head>
   <body>
     <header class="admin-header">
       <div class="admin-shell admin-header-inner">
-        <div class="admin-title">
+        <div class="admin-brand">
           <h1>天翔睿翼后台</h1>
-          <p>合作咨询只读；AI 旅拍机点位支持表格化维护。</p>
+          <p>统一管理合作咨询线索与 AI 旅拍机点位数据</p>
         </div>
-        <div class="form-actions">
+        <div class="admin-header-actions">
           <a class="button secondary" href="/" target="_blank" rel="noreferrer">打开官网</a>
           <button class="secondary" id="logout-button" type="button">退出登录</button>
         </div>
       </div>
+      <nav class="admin-shell admin-tabs" aria-label="后台模块切换">
+        <button class="admin-tab active" type="button" data-tab="leads">合作咨询</button>
+        <button class="admin-tab" type="button" data-tab="locations">AI 旅拍机点位</button>
+      </nav>
     </header>
 
     <main class="admin-shell admin-main">
-      <section class="admin-card">
-        <div class="card-head">
-          <div>
+      <section class="admin-card tab-panel" data-panel="leads">
+        <div class="panel-head">
+          <div class="panel-title">
             <h2>合作咨询</h2>
-            <p>用户提交数据仅支持查看和导出，不在后台修改。</p>
+            <p>用户从官网表单提交的线索，仅支持查看与导出，不在后台修改。</p>
           </div>
-          <a class="button" href="/api/admin/leads?download=1">导出 CSV</a>
+          <div class="panel-actions">
+            <input class="search-input" id="leads-search" type="search" placeholder="搜索姓名、公司、手机号或产品" />
+            <a class="button" href="/api/admin/leads?download=1">导出 CSV</a>
+          </div>
         </div>
         <div class="table-wrap">
           <table>
@@ -277,15 +504,18 @@ if (!isAdminRequest(Astro.request)) {
             </tbody>
           </table>
         </div>
+        <div class="pagination" id="leads-pagination"></div>
       </section>
 
-      <section class="admin-card">
-        <div class="card-head">
-          <div>
+      <section class="admin-card tab-panel" data-panel="locations" hidden>
+        <div class="panel-head">
+          <div class="panel-title">
             <h2>AI 旅拍机点位</h2>
-            <p>维护城市、点位、场景、状态和搜索关键词；保存时会自动备份原 CSV。</p>
+            <p>维护城市、点位、场景、状态与搜索关键词；保存时会自动备份原 CSV。</p>
           </div>
-          <a class="button" href="/api/admin/locations?download=1">导出点位 CSV</a>
+          <div class="panel-actions">
+            <a class="button" href="/api/admin/locations?download=1">导出点位 CSV</a>
+          </div>
         </div>
 
         <form id="location-form" class="form-grid">
@@ -324,7 +554,7 @@ if (!isAdminRequest(Astro.request)) {
           </label>
           <div class="form-actions">
             <button type="submit">保存点位</button>
-            <button class="secondary" type="button" id="reset-location-form">新增模式</button>
+            <button class="secondary" type="button" id="reset-location-form" hidden>取消修改</button>
           </div>
           <div class="status" id="location-message"></div>
         </form>
@@ -357,17 +587,31 @@ if (!isAdminRequest(Astro.request)) {
             </tbody>
           </table>
         </div>
+        <div class="pagination" id="locations-pagination"></div>
       </section>
     </main>
 
     <script is:inline>
+      const PAGE_SIZE = 20;
+
       const leadsBody = document.querySelector("#leads-body");
+      const leadsSearch = document.querySelector("#leads-search");
+      const leadsPaginationEl = document.querySelector("#leads-pagination");
+
       const locationsBody = document.querySelector("#locations-body");
+      const locationsPaginationEl = document.querySelector("#locations-pagination");
       const locationForm = document.querySelector("#location-form");
       const locationMessage = document.querySelector("#location-message");
       const locationSearch = document.querySelector("#location-search");
       const importFile = document.querySelector("#location-import-file");
+      const resetLocationButton = document.querySelector("#reset-location-form");
+
+      let allLeads = [];
+      let leadsKeyword = "";
+      let leadsPage = 1;
+
       let locations = [];
+      let locationsPage = 1;
 
       const escapeHtml = (value) => String(value ?? "")
         .replaceAll("&", "&amp;")
@@ -375,6 +619,15 @@ if (!isAdminRequest(Astro.request)) {
         .replaceAll(">", "&gt;")
         .replaceAll('"', "&quot;")
         .replaceAll("'", "&#039;");
+
+      function statusPill(status) {
+        const text = String(status ?? "").trim();
+        let cls = "default";
+        if (text === "已覆盖") cls = "covered";
+        else if (text === "可咨询") cls = "consult";
+        else if (text === "洽谈中") cls = "talking";
+        return `<span class="status-pill ${cls}">${escapeHtml(text || "未填写")}</span>`;
+      }
 
       function setLocationMessage(message, isError = false) {
         locationMessage.textContent = message;
@@ -419,13 +672,53 @@ if (!isAdminRequest(Astro.request)) {
         return data;
       }
 
-      function renderLeads(items) {
-        if (!items.length) {
-          leadsBody.innerHTML = '<tr><td colspan="6" class="muted">暂无合作咨询</td></tr>';
+      function renderPagination(container, current, total, onChange) {
+        if (total <= 1) {
+          container.innerHTML = "";
           return;
         }
 
-        leadsBody.innerHTML = items.map((item) => `
+        container.innerHTML = `
+          <button type="button" data-action="first" ${current === 1 ? "disabled" : ""}>首页</button>
+          <button type="button" data-action="prev" ${current === 1 ? "disabled" : ""}>上一页</button>
+          <span class="page-info">第 <strong>${current}</strong> / ${total} 页</span>
+          <button type="button" data-action="next" ${current === total ? "disabled" : ""}>下一页</button>
+          <button type="button" data-action="last" ${current === total ? "disabled" : ""}>末页</button>
+        `;
+
+        const go = (page) => {
+          if (page < 1 || page > total || page === current) return;
+          onChange(page);
+        };
+
+        container.querySelector('[data-action="first"]').addEventListener("click", () => go(1));
+        container.querySelector('[data-action="prev"]').addEventListener("click", () => go(current - 1));
+        container.querySelector('[data-action="next"]').addEventListener("click", () => go(current + 1));
+        container.querySelector('[data-action="last"]').addEventListener("click", () => go(total));
+      }
+
+      function renderLeads() {
+        const keyword = leadsKeyword.trim().toLowerCase();
+        const filtered = allLeads.filter((item) => {
+          if (!keyword) return true;
+          return [item.submittedAt, item.name, item.company, item.phone, item.product, item.ip]
+            .some((v) => String(v ?? "").toLowerCase().includes(keyword));
+        });
+
+        if (!filtered.length) {
+          leadsBody.innerHTML = '<tr><td colspan="6" class="muted">' + (keyword ? "没有匹配的咨询" : "暂无合作咨询") + '</td></tr>';
+          leadsPaginationEl.innerHTML = "";
+          return;
+        }
+
+        const totalPages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
+        if (leadsPage > totalPages) leadsPage = totalPages;
+        if (leadsPage < 1) leadsPage = 1;
+
+        const start = (leadsPage - 1) * PAGE_SIZE;
+        const pageItems = filtered.slice(start, start + PAGE_SIZE);
+
+        leadsBody.innerHTML = pageItems.map((item) => `
           <tr>
             <td>${escapeHtml(item.submittedAt)}</td>
             <td>${escapeHtml(item.name)}</td>
@@ -435,6 +728,11 @@ if (!isAdminRequest(Astro.request)) {
             <td>${escapeHtml(item.ip)}</td>
           </tr>
         `).join("");
+
+        renderPagination(leadsPaginationEl, leadsPage, totalPages, (page) => {
+          leadsPage = page;
+          renderLeads();
+        });
       }
 
       function renderLocations() {
@@ -445,43 +743,90 @@ if (!isAdminRequest(Astro.request)) {
         });
 
         if (!filtered.length) {
-          locationsBody.innerHTML = '<tr><td colspan="8" class="muted">暂无点位数据</td></tr>';
+          locationsBody.innerHTML = '<tr><td colspan="8" class="muted">' + (keyword ? "没有匹配的点位" : "暂无点位数据") + '</td></tr>';
+          locationsPaginationEl.innerHTML = "";
           return;
         }
 
-        locationsBody.innerHTML = filtered.map((item) => `
+        const totalPages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
+        if (locationsPage > totalPages) locationsPage = totalPages;
+        if (locationsPage < 1) locationsPage = 1;
+
+        const start = (locationsPage - 1) * PAGE_SIZE;
+        const pageItems = filtered.slice(start, start + PAGE_SIZE);
+
+        locationsBody.innerHTML = pageItems.map((item) => `
           <tr>
             <td>${escapeHtml(item.city)}</td>
             <td>${escapeHtml(item.spotName)}</td>
             <td>${escapeHtml(item.sceneType)}</td>
             <td>${escapeHtml(item.deviceType)}</td>
-            <td>${escapeHtml(item.status)}</td>
+            <td>${statusPill(item.status)}</td>
             <td class="wrap">${escapeHtml(item.description)}</td>
             <td class="wrap">${escapeHtml(item.keywords)}</td>
-            <td>
-              <button class="secondary" type="button" data-edit="${item.id}">修改</button>
-              <button class="danger" type="button" data-delete="${item.id}">删除</button>
+            <td class="actions">
+              <div class="row-actions">
+                <button class="secondary" type="button" data-edit="${item.id}">修改</button>
+                <button class="danger" type="button" data-delete="${item.id}">删除</button>
+              </div>
             </td>
           </tr>
         `).join("");
+
+        renderPagination(locationsPaginationEl, locationsPage, totalPages, (page) => {
+          locationsPage = page;
+          renderLocations();
+        });
       }
 
       function resetLocationForm() {
         locationForm.reset();
         locationForm.elements.id.value = "";
-        setLocationMessage("当前为新增模式");
+        resetLocationButton.setAttribute("hidden", "");
+        setLocationMessage("");
       }
 
       async function loadLeads() {
         const data = await api("/api/admin/leads");
-        renderLeads(data.items || []);
+        allLeads = data.items || [];
+        leadsPage = 1;
+        renderLeads();
       }
 
       async function loadLocations() {
         const data = await api("/api/admin/locations");
         locations = data.items || [];
+        locationsPage = 1;
         renderLocations();
       }
+
+      // Tab 切换
+      document.querySelectorAll(".admin-tab").forEach((tab) => {
+        tab.addEventListener("click", () => {
+          const target = tab.dataset.tab;
+          document.querySelectorAll(".admin-tab").forEach((el) => {
+            el.classList.toggle("active", el === tab);
+          });
+          document.querySelectorAll(".tab-panel").forEach((panel) => {
+            const match = panel.dataset.panel === target;
+            if (match) panel.removeAttribute("hidden");
+            else panel.setAttribute("hidden", "");
+          });
+        });
+      });
+
+      // 合作咨询搜索
+      leadsSearch?.addEventListener("input", () => {
+        leadsKeyword = leadsSearch.value;
+        leadsPage = 1;
+        renderLeads();
+      });
+
+      // 点位搜索（保留：原 input 监听重置分页）
+      locationSearch?.addEventListener("input", () => {
+        locationsPage = 1;
+        renderLocations();
+      });
 
       locationForm?.addEventListener("submit", async (event) => {
         event.preventDefault();
@@ -528,6 +873,7 @@ if (!isAdminRequest(Astro.request)) {
           locationForm.elements.status.value = item.status;
           locationForm.elements.description.value = item.description;
           locationForm.elements.keywords.value = item.keywords;
+          resetLocationButton.removeAttribute("hidden");
           setLocationMessage(`正在修改：${item.spotName}`);
           locationForm.scrollIntoView({ behavior: "smooth", block: "start" });
         }
@@ -569,6 +915,7 @@ if (!isAdminRequest(Astro.request)) {
           locations = data.items || [];
           setLocationMessage(data.message || "导入完成");
           importFile.value = "";
+          locationsPage = 1;
           renderLocations();
         } catch (error) {
           setLocationMessage(error.message || "导入失败，请检查 CSV 表头和内容", true);
@@ -578,7 +925,6 @@ if (!isAdminRequest(Astro.request)) {
       document.querySelector("#reset-location-form")?.addEventListener("click", resetLocationForm);
       document.querySelector("#append-import")?.addEventListener("click", () => importLocations("append"));
       document.querySelector("#replace-import")?.addEventListener("click", () => importLocations("replace"));
-      locationSearch?.addEventListener("input", renderLocations);
       document.querySelector("#logout-button")?.addEventListener("click", async () => {
         await fetch("/api/admin/logout", { method: "POST" });
         location.href = "/admin/login/";

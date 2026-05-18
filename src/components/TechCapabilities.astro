@@ -1,0 +1,96 @@
+---
+interface Capability {
+  title: string;
+  description: string;
+  items: string[];
+  icon: "model" | "terminal" | "infra" | "platform";
+}
+
+const capabilities: Capability[] = [
+  {
+    title: "大模型与推理能力",
+    description: "支持多模型统一接入、推理优化与高并发服务部署",
+    items: ["多模型统一调度", "推理服务优化", "高并发能力", "模型工程化"],
+    icon: "model"
+  },
+  {
+    title: "智能终端系统能力",
+    description: "面向 AI 互动终端的设备、内容与系统协同能力",
+    items: ["多设备接入控制", "边缘计算部署", "终端能力封装", "软硬件协同"],
+    icon: "terminal"
+  },
+  {
+    title: "AI 基础设施能力",
+    description: "GPU 集群、调度与云边协同的底层算力交付能力",
+    items: ["GPU 集群部署", "资源调度能力", "弹性扩容能力", "云边协同架构"],
+    icon: "infra"
+  },
+  {
+    title: "工程化平台能力",
+    description: "从交付到运营的端到端工程化与平台化能力",
+    items: ["统一业务平台", "自动化交付", "远程运维体系", "持续运营能力"],
+    icon: "platform"
+  }
+];
+
+const icons: Record<Capability["icon"], string> = {
+  model: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <rect x="7.5" y="7.5" width="9" height="9" rx="1.5"/>
+    <path d="M12 3v2.5M12 18.5V21M3 12h2.5M18.5 12H21M5.5 5.5l1.8 1.8M16.7 16.7l1.8 1.8M5.5 18.5l1.8-1.8M16.7 7.3l1.8-1.8"/>
+    <circle cx="10" cy="10" r="0.9"/>
+    <circle cx="14" cy="10" r="0.9"/>
+    <circle cx="10" cy="14" r="0.9"/>
+    <circle cx="14" cy="14" r="0.9"/>
+  </svg>`,
+  terminal: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <rect x="3" y="3.5" width="18" height="13" rx="2"/>
+    <path d="M8 20.5h8M12 16.5v4"/>
+    <path d="M8 8.5l2.2 2-2.2 2"/>
+    <path d="M13 12.5h3.5"/>
+  </svg>`,
+  infra: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <rect x="3" y="3.5" width="18" height="5" rx="1.5"/>
+    <rect x="3" y="10.5" width="18" height="5" rx="1.5"/>
+    <rect x="3" y="17.5" width="18" height="3" rx="1.5"/>
+    <circle cx="6.5" cy="6" r="0.7"/>
+    <circle cx="6.5" cy="13" r="0.7"/>
+    <path d="M10.5 6h7M10.5 13h7"/>
+  </svg>`,
+  platform: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <circle cx="5" cy="6" r="1.8"/>
+    <circle cx="19" cy="6" r="1.8"/>
+    <circle cx="12" cy="12" r="2"/>
+    <circle cx="5" cy="18" r="1.8"/>
+    <circle cx="19" cy="18" r="1.8"/>
+    <path d="M6.5 7.2l4 3.3M17.5 7.2l-4 3.3M6.5 16.8l4-3.3M17.5 16.8l-4-3.3"/>
+  </svg>`
+};
+---
+
+<section class="page-section tech-section">
+  <div class="shell">
+    <div class="section-title compact-title tech-section-title">
+      <p class="eyebrow">CORE CAPABILITIES</p>
+      <h2>核心技术能力</h2>
+      <p>从 AI 基础设施到终端落地的完整能力体系</p>
+    </div>
+
+    <div class="tech-grid">
+      {capabilities.map((item) => (
+        <article class="tech-card">
+          <span class="tech-card-glow" aria-hidden="true"></span>
+          <div class="tech-card-head">
+            <div class="tech-card-text">
+              <h3>{item.title}</h3>
+              <p>{item.description}</p>
+            </div>
+            <span class="tech-card-icon" aria-hidden="true" set:html={icons[item.icon]} />
+          </div>
+          <ul class="tech-card-list">
+            {item.items.map((point) => <li>{point}</li>)}
+          </ul>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
