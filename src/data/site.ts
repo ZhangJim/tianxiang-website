@@ -13,7 +13,7 @@ export const company = {
 };
 
 export const seo = {
-  defaultImage: "/assets/branding/001.png",
+  defaultImage: "/assets/branding/001.jpg",
   keywords: [
     "AI算力服务",
     "GPU算力租赁",
@@ -85,6 +85,11 @@ export const seo = {
       title: "行业方案｜AI算力、智能终端与场景化解决方案",
       description:
         "围绕企业、文旅、商业空间和门店场景，提供从AI能力、智能终端到项目交付的行业解决方案。"
+    },
+    "/careers/": {
+      title: "加入我们｜AI 推理、算法、全栈与嵌入式岗位招聘",
+      description:
+        "天翔睿翼长期招募 AI 推理平台工程师、算法工程师、全栈高级工程师与嵌入式软件工程师，参与大模型、智能终端与 AI 基础设施建设。"
     }
   }
 };
@@ -110,6 +115,11 @@ export const navLinks = [
     href: "/terminals/ai-cat/",
     label: "AI机器猫",
     matchPrefixes: ["/terminals/ai-cat/"]
+  },
+  {
+    href: "/careers/",
+    label: "加入我们",
+    matchPrefixes: ["/careers/"]
   },
   { href: "/about/", label: "关于我们" }
 ];

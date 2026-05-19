@@ -164,15 +164,15 @@ export const cardMachinePhotoWall = [
 
 export const cardMachineCardStyles = [
   {
-    src: "/assets/card-machine/social-040.png",
+    src: "/assets/card-machine/social-040.jpg",
     alt: "POPOFIFI 卡牌样式一"
   },
   {
-    src: "/assets/card-machine/social-041.png",
+    src: "/assets/card-machine/social-041.jpg",
     alt: "POPOFIFI 卡牌样式二"
   },
   {
-    src: "/assets/card-machine/social-042.png",
+    src: "/assets/card-machine/social-042.jpg",
     alt: "POPOFIFI 卡牌样式三"
   },
   {
@@ -180,11 +180,11 @@ export const cardMachineCardStyles = [
     alt: "POPOFIFI 卡牌样式四"
   },
   {
-    src: "/assets/card-machine/agent-011.png",
+    src: "/assets/card-machine/agent-011.jpg",
     alt: "POPOFIFI 单卡样式"
   },
   {
-    src: "/assets/card-machine/film-073.png",
+    src: "/assets/card-machine/film-073.jpg",
     alt: "POPOFIFI NFC 卡牌样式"
   }
 ];

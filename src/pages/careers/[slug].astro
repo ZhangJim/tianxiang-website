@@ -1,0 +1,70 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { careers, recruitContact } from "../../data/careers";
+
+export function getStaticPaths() {
+  return careers.map((position) => ({
+    params: { slug: position.slug },
+    props: { position }
+  }));
+}
+
+const { position } = Astro.props;
+const mailto = `mailto:${recruitContact.email}`;
+
+const sections = [
+  { title: "岗位职责", items: position.detail.responsibilities },
+  { title: "任职要求", items: position.detail.requirements },
+  { title: "加分项", items: position.detail.bonus }
+];
+---
+
+<BaseLayout
+  title={`${position.title}｜加入我们`}
+  description={`${position.title}：${position.summary}`}
+>
+  <section class="page-section">
+    <div class="shell">
+      <a class="career-back-link" href="/careers/#positions">← 返回职位列表</a>
+
+      <div class="career-detail-hero">
+        <p class="eyebrow">POSITION</p>
+        <h1>{position.title}</h1>
+        <p class="career-detail-summary">{position.summary}</p>
+        <div class="career-card-tags">
+          {position.tags.map((tag) => (
+            <span class="career-tag">{tag}</span>
+          ))}
+        </div>
+      </div>
+
+      <article class="info-card career-detail-card">
+        <h3>岗位介绍</h3>
+        <p>{position.detail.intro}</p>
+      </article>
+
+      {sections.map((section) => (
+        <article class="info-card career-detail-card">
+          <h3>{section.title}</h3>
+          <ul class="career-detail-list">
+            {section.items.map((item) => <li>{item}</li>)}
+          </ul>
+        </article>
+      ))}
+
+      <div class="careers-contact-panel careers-contact-panel-compact">
+        <div class="careers-contact-copy">
+          <p class="eyebrow">APPLY</p>
+          <h2>对该岗位感兴趣？</h2>
+          <p>欢迎将简历发送至右侧邮箱，我们会根据岗位匹配尽快与您联系。</p>
+        </div>
+        <div class="careers-contact-action">
+          <a class="careers-contact-mail" href={mailto}>{recruitContact.email}</a>
+          <p class="careers-contact-hint">
+            邮件标题建议：<strong>{`【${position.title}】姓名+工作年限`}</strong>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

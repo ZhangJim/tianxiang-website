@@ -22,53 +22,53 @@ export const aiCatAdvantages = [
 export const aiCatFlow = [
   {
     step: "01",
-    title: "识别路过客流",
-    description: "在门店前场识别 1-10 米范围内的用户，抓住第一眼停留。"
+    title: "智能感知",
+    description: "支持视觉、语音等多种感知能力"
   },
   {
     step: "02",
-    title: "主动招呼互动",
-    description: "通过语音、动作和角色设定主动开场，降低顾客参与门槛。"
+    title: "主动互动",
+    description: "支持语音、动作与多种互动方式"
   },
   {
     step: "03",
-    title: "发券拍照转化",
-    description: "可联动优惠券、明卡打印、拍照互动与品牌任务，促进进店与消费。"
+    title: "内容连接",
+    description: "可结合拍照、营销与品牌内容能力"
   },
   {
     step: "04",
-    title: "分享入群沉淀",
-    description: "把现场互动延伸到社交传播与会员沉淀，形成可持续运营入口。"
+    title: "持续运营",
+    description: "支持用户沉淀与长期运营拓展"
   }
 ];
 
 export const aiCatCaseWall = [
   {
-    src: "/assets/cat-bot/01.png",
+    src: "/assets/cat-bot/01.jpg",
     alt: "AI机器猫商场门店引流案例"
   },
   {
-    src: "/assets/cat-bot/02.png",
+    src: "/assets/cat-bot/02.jpg",
     alt: "AI机器猫餐饮门店互动案例"
   },
   {
-    src: "/assets/cat-bot/03.png",
+    src: "/assets/cat-bot/03.jpg",
     alt: "AI机器猫品牌联名活动案例"
   },
   {
-    src: "/assets/cat-bot/04.png",
+    src: "/assets/cat-bot/04.jpg",
     alt: "AI机器猫活动会展案例"
   },
   {
-    src: "/assets/cat-bot/05.png",
+    src: "/assets/cat-bot/05.jpg",
     alt: "AI机器猫商业空间互动案例"
   },
   {
-    src: "/assets/cat-bot/06.png",
+    src: "/assets/cat-bot/06.jpg",
     alt: "AI机器猫门店运营案例"
   },
   {
-    src: "/assets/cat-bot/07.png",
+    src: "/assets/cat-bot/07.jpg",
     alt: "AI机器猫文旅体验点案例"
   }
 ];

@@ -170,7 +170,7 @@ export const travelPhotoCases = [
 // ];
 export const travelPhotoGallery = [
   {
-    src: "/assets/travel-photo/anli/tiantan.png",
+    src: "/assets/travel-photo/anli/tiantan.jpg",
     alt: "天坛景区AI旅拍机落地案例",
     caption: "天坛场景"
   },
@@ -221,7 +221,7 @@ export const travelPhotoGallery = [
     caption: "青岩古镇场景"
   },
   {
-    src: "/assets/travel-photo/anli/yuanmingyuan.png",
+    src: "/assets/travel-photo/anli/yuanmingyuan.jpg",
     alt: "圆明园景区AI旅拍机落地案例",
     caption: "圆明园场景"
   }

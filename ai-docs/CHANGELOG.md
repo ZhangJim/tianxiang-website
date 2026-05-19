@@ -35,6 +35,12 @@
 - ⚠️ Breaking 修复：后台 `<style>` 改为 `<style is:global>`。原因：Astro 4 默认 scoped CSS 给静态元素加 `data-astro-cid-XXX` 属性、并把选择器改写成 `tbody td[data-astro-cid-XXX]`，但 JS 用 `innerHTML` 动态创建的表格行/按钮**没有这个属性**，导致所有动态生成元素的样式完全失效（行线看不见、按钮不能横排都是这个原因）。改 global 后样式立刻生效。后续凡是「DOM 由 JS 动态生成的页面」都必须用 `<style is:global>` 或外部 CSS 文件。
 - 后台列表配色降饱和：偶行底色从刺眼的 `#e3c388` 改为柔和米色 `#f5ecd9`，悬浮色从 `#f3c891` 改为浅米橙 `#fbe6cf`，表头底色与行线同步调淡，整体更内敛、贴合米色品牌调
 - 首页新增「核心技术能力」模块，位于「核心产品与场景」与「AI能力与服务」之间。2×2 卡片布局（移动端单列），4 张能力卡：大模型与推理 / 智能终端系统 / AI 基础设施 / 工程化平台。卡片含线性 SVG 图标（lucide 风格内联，不引入新依赖），悬停轻微上浮 + 科技蓝渐变描边 + 图标动效。组件 [`src/components/TechCapabilities.astro`](src/components/TechCapabilities.astro)，数据数组驱动，样式集中在 `global.css` 末尾的 `.tech-*` 模块
+- 新增「加入我们」页面：列表页 `/careers/` + 详情页 `/careers/[slug]/`。Hero（查看职位 / 投递简历 双 CTA） + 4 个职位卡片（AI 推理平台工程师 / 算法工程师 / 全栈高级工程师 / 嵌入式软件工程师，2×2 → 移动端单列） + 福利 6 项 + 深色简历投递区。详情页按「岗位介绍 / 岗位职责 / 任职要求 / 加分项」四段呈现，含返回链接与定向 mailto。
+- 顶部导航新增「加入我们」入口，位于「关于我们」之前
+- `src/data/site.ts` 同步 `/careers/` SEO 文案；`sitemap.xml.ts` 同步加入 4 个职位详情页 URL
+- 招聘邮箱：`13439060173@xcastle.cn`（统一来源 `src/data/careers.ts` 的 `recruitContact`，后续修改只改一处）
+- 「加入我们」Hero 区去掉「查看职位 / 投递简历」双 CTA 按钮（投递入口由页面底部深色面板承接）
+- 图片资源后缀同步：素材文件夹中部分图由 PNG 改存为 JPG，对应更新代码引用共 19 处后缀（branding/001、topshouye、travel-photo/top1 与 anli/tiantan、anli/yuanmingyuan、card-machine/0001 与 social-040~042、agent-011、film-073、cat-bot/01~07 与 postcard-terminal）。site-logo-transparent、home logo、flow-04、mall-*、social-044、biz-019、travel-photo/1~3 等仍为 PNG，未改
 
 ## 2026-05-15
 

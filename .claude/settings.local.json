@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cd \"/c/Users/海岩/Desktop/tianxiang-website\" && find public/assets -type f \\\\\\( -iname \"*.png\" -o -iname \"*.jpg\" -o -iname \"*.jpeg\" -o -iname \"*.webp\" -o -iname \"*.svg\" -o -iname \"*.gif\" \\\\\\) | sort)",
+      "Read(//c/c/Users/海岩/Desktop/tianxiang-website/public/**)"
+    ]
+  }
+}

@@ -1,11 +1,13 @@
 import { seo } from "../data/site";
 import { rentalMachines } from "../data/rental";
+import { careers } from "../data/careers";
 
 export const prerender = false;
 
 const pages = [
   ...Object.keys(seo.pages),
-  ...rentalMachines.map((machine) => `/rental/${machine.slug}/`)
+  ...rentalMachines.map((machine) => `/rental/${machine.slug}/`),
+  ...careers.map((position) => `/careers/${position.slug}/`)
 ];
 
 const escapeXml = (value: string) =>

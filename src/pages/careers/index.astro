@@ -1,0 +1,84 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { careers, benefits, recruitContact } from "../../data/careers";
+
+const mailto = `mailto:${recruitContact.email}`;
+---
+
+<BaseLayout title="加入我们">
+  <section class="page-section careers-hero-section">
+    <div class="shell">
+      <div class="careers-hero">
+        <p class="eyebrow">JOIN US</p>
+        <h1>加入我们，一起构建 AI 的真实世界应用</h1>
+        <p class="careers-hero-copy">
+          参与大模型、智能终端、AI 基础设施与真实场景应用建设。我们关注 AI 能力能否真正在景区、商场、门店等线下场景落地，并持续创造业务价值。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="page-section" id="positions">
+    <div class="shell">
+      <div class="section-title compact-title">
+        <p class="eyebrow">OPEN POSITIONS</p>
+        <h2>开放职位</h2>
+        <p>当前开放的核心岗位，长期招募对 AI 工程化与终端落地有热情的同伴。</p>
+      </div>
+
+      <div class="careers-grid">
+        {careers.map((position) => (
+          <a class="career-card" href={`/careers/${position.slug}/`}>
+            <div class="career-card-head">
+              <h3>{position.title}</h3>
+              <span class="career-card-arrow" aria-hidden="true">→</span>
+            </div>
+            <p class="career-card-summary">{position.summary}</p>
+            <div class="career-card-tags">
+              {position.tags.map((tag) => (
+                <span class="career-tag">{tag}</span>
+              ))}
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="page-section">
+    <div class="shell">
+      <div class="section-title compact-title">
+        <p class="eyebrow">BENEFITS</p>
+        <h2>福利待遇</h2>
+        <p>关注成长、关注效率，关注每个人是否能在真实项目里持续进步。</p>
+      </div>
+
+      <div class="benefits-grid">
+        {benefits.map((benefit) => (
+          <article class="benefit-card">
+            <h3>{benefit.title}</h3>
+            <p>{benefit.description}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="page-section">
+    <div class="shell">
+      <div class="careers-contact-panel">
+        <div class="careers-contact-copy">
+          <p class="eyebrow">APPLY NOW</p>
+          <h2>简历投递</h2>
+          <p>请将简历发送至右侧邮箱，我们会根据岗位匹配尽快与您联系。</p>
+        </div>
+        <div class="careers-contact-action">
+          <a class="careers-contact-mail" href={mailto}>{recruitContact.email}</a>
+          <p class="careers-contact-hint">
+            邮件标题建议：<strong>{recruitContact.subjectHint}</strong>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
